@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CodeStore App</title>
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-grad: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+            --bg-color: #f8f9fe;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-light: #a0aec0;
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            --shadow-pressed: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--bg-color); color: var(--text-main); padding-bottom: 100px; }
+
+        /* --- UI COMPONENTS --- */
+
+        /* Header */
+        .app-header {
+            background: var(--primary-grad);
+            padding: 30px 25px 50px 25px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        .app-header h1 { margin: 0; font-size: 1.5rem; font-weight: 700; }
+        .app-header p { margin: 5px 0 0 0; opacity: 0.8; font-size: 0.9rem; }
+
+        /* Search */
+        .search-container { padding: 0 25px; margin-top: -25px; position: relative; z-index: 20; }
+        .search-box {
+            background: white; border-radius: 20px; padding: 15px 20px;
+            display: flex; align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .search-box i { color: #cbd5e0; font-size: 1.1rem; }
+        .search-box input {
+            border: none; outline: none; margin-left: 15px; width: 100%;
+            font-size: 1rem; font-family: 'Outfit', sans-serif; color: var(--text-main);
+        }
+
+        /* Notice Bar */
+        #notice-bar {
+            margin: 20px 25px 0 25px; padding: 15px; border-radius: 15px;
+            background: var(--accent-grad); color: white; font-weight: 500; font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(250, 112, 154, 0.3); display: none;
+            align-items: center; gap: 10px; animation: slideDown 0.4s ease;
+        }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 25px; }
+        .product-card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: var(--shadow); transition: transform 0.2s;
+            display: flex; flex-direction: column;
+        }
+        .product-card:active { transform: scale(0.97); }
+        .p-img-box { width: 100%; height: 140px; background: #edf2f7; position: relative; overflow: hidden; }
+        .p-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        .product-card:hover .p-img { transform: scale(1.1); }
+        
+        .p-details { padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .p-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 5px; line-height: 1.4; color: var(--text-main); }
+        .p-price { font-weight: 700; font-size: 1.1rem; color: #667eea; }
+
+        /* Floating Bottom Nav (Glassmorphism) */
+        .bottom-nav {
+            position: fixed; bottom: 20px; left: 20px; right: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 15px; border-radius: 25px;
+            display: flex; justify-content: space-around; align-items: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.5);
+            z-index: 100;
+        }
+        .nav-item {
+            border: none; background: none; color: #a0aec0;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            font-size: 0.75rem; font-weight: 500; transition: 0.3s;
+        }
+        .nav-item i { font-size: 1.4rem; transition: 0.3s; }
+        .nav-item.active { color: #667eea; }
+        .nav-item.active i { transform: translateY(-3px); }
+
+        /* Sheets / Modals */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000;
+            opacity: 0; pointer-events: none; transition: 0.3s;
+            display: flex; align-items: flex-end;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        
+        .modal-sheet {
+            background: white; width: 100%; border-radius: 30px 30px 0 0;
+            padding: 30px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-height: 85vh; overflow-y: auto;
+        }
+        .modal-overlay.open .modal-sheet { transform: translateY(0); }
+
+        .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .sheet-title { font-size: 1.2rem; font-weight: 700; }
+        .close-btn { background: #edf2f7; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4a5568; cursor: pointer; }
+
+        /* Buttons & Inputs */
+        .btn-primary {
+            background: var(--primary-grad); color: white; border: none;
+            padding: 16px; border-radius: 18px; font-weight: 600; font-size: 1rem;
+            width: 100%; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            margin-top: 15px; cursor: pointer;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #718096; margin-bottom: 8px; }
+        .form-input {
+            width: 100%; padding: 14px; background: #f7fafc; border: 2px solid #edf2f7;
+            border-radius: 12px; font-family: inherit; font-size: 1rem;
+        }
+        .form-input:focus { border-color: #667eea; background: white; outline: none; }
+
+        /* Bank Info Card */
+        .bank-card {
+            background: #f8f9fe; border: 1px dashed #667eea; padding: 20px; border-radius: 15px;
+            margin-bottom: 20px; font-size: 0.9rem; color: #4a5568;
+        }
+        .bank-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .bank-row span { color: #a0aec0; }
+        .bank-row b { color: #2d3748; }
+
+        /* Order List */
+        .order-item {
+            background: white; padding: 20px; border-radius: 18px; margin-bottom: 15px;
+            box-shadow: var(--shadow); position: relative;
+        }
+        .status-badge {
+            position: absolute; top: 20px; right: 20px; font-size: 0.7rem; font-weight: 700;
+            padding: 5px 10px; border-radius: 8px; text-transform: uppercase;
+        }
+        .st-pending { background: #fffaf0; color: #ed8936; }
+        .st-approved { background: #f0fff4; color: #48bb78; }
+        .st-rejected { background: #fff5f5; color: #f56565; }
+
+        /* Animations */
+        @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .view { display: none; animation: fadeIn 0.3s ease; }
+        .view.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="app-header">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h1>Digital Store</h1>
+            <i class="fas fa-user-circle" style="font-size:1.5rem; opacity:0.8;"></i>
+        </div>
+        <p>Premium source codes & assets.</p>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="What are you looking for?" onkeyup="filterProducts()">
+        </div>
+    </div>
+
+    <!-- Dynamic Notice -->
+    <div id="notice-bar">
+        <i class="fas fa-bullhorn"></i> <span id="notice-text">Notice here...</span>
+    </div>
+
+    <!-- VIEW 1: HOME (Products) -->
+    <div id="view-home" class="view active">
+        <div class="grid" id="product-grid">
+            <!-- Products will inject here -->
+            <div style="grid-column:1/-1; text-align:center; color:#a0aec0; margin-top:50px;">
+                <i class="fas fa-circle-notch fa-spin"></i> Loading...
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 2: ORDERS (History) -->
+    <div id="view-orders" class="view" style="padding: 25px;">
+        <h2 style="margin-top:0;">My Orders</h2>
+        <div style="background:white; padding:20px; border-radius:18px; box-shadow:var(--shadow); margin-bottom:25px;">
+            <div class="form-group">
+                <label>Track by Email</label>
+                <div style="display:flex; gap:10px;">
+                    <input type="email" id="track-email" class="form-input" placeholder="Enter your email">
+                    <button class="btn-primary" style="margin:0; width:auto; padding:0 25px;" onclick="loadOrders()">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="orders-list"></div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="switchView('home', this)">
+            <i class="fas fa-home"></i> Home
+        </button>
+        <button class="nav-item" onclick="switchView('orders', this)">
+            <i class="fas fa-receipt"></i> Orders
+        </button>
+    </nav>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="modal-product" class="modal-overlay">
+        <div class="modal-sheet">
+            <div class="p-img-box" style="height:200px; border-radius:15px; margin-bottom:20px;">
+                <img id="m-img" class="p-img" src="">
+            </div>
+            <div class="sheet-header">
+                <h2 id="m-title" class="sheet-title" style="margin:0;">Product Name</h2>
+                <div class="close-btn" onclick="closeModal('modal-product')"><i class="fas fa-times"></i></div>
+            </div>
+            <h3 id="m-price" style="color:#667eea; font-size:1.5rem; margin:0 0 15px 0;">$0.00</h3>
+            <p id="m-desc" style="color:#718096; line-height:1.6; margin-bottom:25px;">Description...</p>
+            <button class="btn-primary" onclick="openCheckout()">
+                Purchase Now <i class="fas fa-lock" style="margin-left:8px; font-size:0.8rem;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="modal-checkout" class="modal-overlay" style="z-index: 1100;">
+        <div class="modal-sheet">
+            <div class="sheet-header">
+                <h2 class="sheet-title">Checkout</h2>
+                <div class="close-btn" onclick="closeModal('modal-checkout')"><i class="fas fa-times"></i></div>
+            </div>
+
+            <!-- Admin Bank Info -->
+            <div id="bank-info-box" class="bank-card">
+                <center>Loading Bank Details...</center>
+            </div>
+
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="buy-name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address (For Delivery)</label>
+                    <input type="email" id="buy-email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Transaction ID / UTR</label>
+                    <input type="text" id="buy-txn" class="form-input" placeholder="Paste Payment ID" required>
+                </div>
+                <button type="submit" class="btn-primary">Confirm Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FIREBASE LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // --- REPLACE WITH YOUR CONFIG ---
+        const firebaseConfig = {
+  apiKey: "AIzaSyAGUjJ47wOlND5-6Au97AOdb5ALzwUbx_Q",
+  authDomain: "mobile-repairing-1c087.firebaseapp.com",
+  databaseURL: "https://mobile-repairing-1c087-default-rtdb.firebaseio.com",
+  projectId: "mobile-repairing-1c087",
+  storageBucket: "mobile-repairing-1c087.firebasestorage.app",
+  messagingSenderId: "313283568116",
+  appId: "1:313283568116:web:a5e15db94303dbf9ee59a1"
+};
+        // --------------------------------
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let products = [];
+        let activeProduct = null;
+        let settings = {};
+
+        // 1. Fetch Settings (Notice & Bank)
+        onValue(ref(db, 'settings'), (snapshot) => {
+            const s = snapshot.val();
+            if(s) {
+                settings = s;
+                // Notice Logic
+                const nb = document.getElementById('notice-bar');
+                if(s.noticeOn && s.notice) {
+                    nb.style.display = 'flex';
+                    document.getElementById('notice-text').innerText = s.notice;
+                } else {
+                    nb.style.display = 'none';
+                }
+            }
+        });
+
+        // 2. Fetch Products
+        onValue(ref(db, 'products'), (snapshot) => {
+            products = [];
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            snapshot.forEach(child => {
+                const p = child.val();
+                products.push({id: child.key, ...p});
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="p-img-box"><img src="${p.image}" class="p-img" onerror="this.src='https://via.placeholder.com/150'"></div>
+                    <div class="p-details">
+                        <div class="p-title">${p.name}</div>
+                        <div class="p-price">$${p.price}</div>
+                    </div>
+                `;
+                card.onclick = () => openProduct(child.key, p);
+                grid.appendChild(card);
+            });
+            if(products.length === 0) grid.innerHTML = '<p style="grid-column:1/-1; text-align:center">No products available.</p>';
+        });
+
+        // --- Functions ---
+
+        window.filterProducts = () => {
+            const term = document.getElementById('search-input').value.toLowerCase();
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            products.forEach(p => {
+                if(p.name.toLowerCase().includes(term)) {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="p-img-box"><img src="${p.image}" class="p-img"></div>
+                        <div class="p-details">
+                            <div class="p-title">${p.name}</div>
+                            <div class="p-price">$${p.price}</div>
+                        </div>
+                    `;
+                    card.onclick = () => openProduct(p.id, p);
+                    grid.appendChild(card);
+                }
+            });
+        };
+
+        window.openProduct = (key, p) => {
+            activeProduct = {id: key, ...p};
+            document.getElementById('m-img').src = p.image;
+            document.getElementById('m-title').innerText = p.name;
+            document.getElementById('m-price').innerText = '$' + p.price;
+            document.getElementById('m-desc').innerText = p.description;
+            document.getElementById('modal-product').classList.add('open');
+        };
+
+        window.openCheckout = () => {
+            // Populate Bank
+            const box = document.getElementById('bank-info-box');
+            if(settings.bank) {
+                box.innerHTML = `
+                    <div class="bank-row"><span>Bank Name</span> <b>${settings.bank}</b></div>
+                    <div class="bank-row"><span>Holder</span> <b>${settings.holder}</b></div>
+                    <div class="bank-row"><span>Account No</span> <b>${settings.acc}</b></div>
+                    <div class="bank-row"><span>IFSC/Code</span> <b>${settings.ifsc}</b></div>
+                    <hr style="border:0; border-top:1px dashed #cbd5e0; margin:10px 0;">
+                    <p style="margin:0; font-size:0.85rem;">${settings.instruct}</p>
+                `;
+            } else {
+                box.innerHTML = "No bank details provided by admin.";
+            }
+            
+            // Auto email
+            const saved = localStorage.getItem('user_email');
+            if(saved) document.getElementById('buy-email').value = saved;
+            
+            document.getElementById('modal-checkout').classList.add('open');
+        };
+
+        window.submitOrder = (e) => {
+            e.preventDefault();
+            const name = document.getElementById('buy-name').value;
+            const email = document.getElementById('buy-email').value.toLowerCase().trim();
+            const txn = document.getElementById('buy-txn').value;
+
+            if(!txn) return alert("Please enter Transaction ID");
+
+            localStorage.setItem('user_email', email);
+
+            push(ref(db, 'orders'), {
+                productName: activeProduct.name,
+                productId: activeProduct.id,
+                price: activeProduct.price,
+                downloadLink: activeProduct.link,
+                userName: name,
+                userEmail: email,
+                txnId: txn,
+                status: 'pending',
+                date: new Date().toISOString()
+            }).then(() => {
+                alert("Order Submitted Successfully!");
+                closeModal('modal-checkout');
+                closeModal('modal-product');
+                switchView('orders', document.querySelectorAll('.nav-item')[1]);
+                document.getElementById('track-email').value = email;
+                window.loadOrders();
+            });
+        };
+
+        window.loadOrders = () => {
+            const email = document.getElementById('track-email').value.toLowerCase().trim();
+            if(!email) return alert("Enter email address");
+            
+            localStorage.setItem('user_email', email);
+            const list = document.getElementById('orders-list');
+            list.innerHTML = '<p style="text-align:center">Fetching data...</p>';
+
+            onValue(ref(db, 'orders'), (snapshot) => {
+                list.innerHTML = '';
+                let hasData = false;
+                // Convert object to array and reverse for newest first
+                const ordersArr = [];
+                snapshot.forEach(c => ordersArr.push(c.val()));
+                ordersArr.reverse();
+
+                ordersArr.forEach(o => {
+                    if(o.userEmail === email) {
+                        hasData = true;
+                        let statusClass = 'st-pending';
+                        let actionHtml = `<p style="font-size:0.8rem; color:#ed8936; margin:0;"><i class="fas fa-clock"></i> Waiting for approval...</p>`;
+
+                        if(o.status === 'approved') {
+                            statusClass = 'st-approved';
+                            actionHtml = `<a href="${o.downloadLink}" target="_blank" class="btn-primary" style="text-decoration:none; padding:10px; font-size:0.9rem; display:block; text-align:center; margin-top:10px;">Download File <i class="fas fa-download"></i></a>`;
+                        } else if(o.status === 'rejected') {
+                            statusClass = 'st-rejected';
+                            actionHtml = `<p style="font-size:0.8rem; color:#f56565; margin:0;">Payment rejected. Contact Admin.</p>`;
+                        }
+
+                        const div = document.createElement('div');
+                        div.className = 'order-item';
+                        div.innerHTML = `
+                            <div class="status-badge ${statusClass}">${o.status}</div>
+                            <h3 style="margin:0 0 5px 0; font-size:1.1rem;">${o.productName}</h3>
+                            <p style="color:#a0aec0; font-size:0.85rem; margin-bottom:15px;">Txn: ${o.txnId}</p>
+                            ${actionHtml}
+                        `;
+                        list.appendChild(div);
+                    }
+                });
+
+                if(!hasData) list.innerHTML = '<p style="text-align:center; color:#a0aec0;">No orders found for this email.</p>';
+            });
+        };
+
+        // --- UI Helpers ---
+        window.closeModal = (id) => document.getElementById(id).classList.remove('open');
+        window.switchView = (viewName, el) => {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + viewName).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+        };
+
+        // Init Load
+        const cached = localStorage.getItem('user_email');
+        if(cached) document.getElementById('track-email').value = cached;
+
+    </script>
+</body>
+</html>

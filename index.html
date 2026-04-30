@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DevStore | Premium Assets</title>
+    <title>DevStore | Premium 3D Assets</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Premium Font: Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,13 +18,14 @@
             --primary: #00f2fe;     /* Neon Cyan */
             --secondary: #4facfe;   /* Bright Blue */
             --tertiary: #7c3aed;    /* Electric Purple */
+            --quaternary: #ff007f;  /* Neon Pink */
             
             --primary-glow: 0 0 30px rgba(0, 242, 254, 0.6);
             --tertiary-glow: 0 0 30px rgba(124, 58, 237, 0.6);
             
             /* Text & Borders */
             --text-main: #ffffff;
-            --text-muted: #a1a1aa;
+            --text-muted: #e2e8f0; 
             --border: rgba(255, 255, 255, 0.08);
             --border-highlight: rgba(255, 255, 255, 0.2);
             --border-glow: linear-gradient(90deg, transparent, var(--primary), var(--tertiary), transparent);
@@ -41,8 +42,9 @@
             --surface-hover: rgba(255, 255, 255, 1);
             --primary: #0284c7; 
             --tertiary: #7c3aed; 
+            --quaternary: #e11d48;
             --text-main: #09090b;
-            --text-muted: #52525b;
+            --text-muted: #334155; 
             --border: rgba(0, 0, 0, 0.08);
             --border-highlight: rgba(0, 0, 0, 0.15);
             --primary-glow: 0 15px 35px rgba(2, 132, 199, 0.3);
@@ -70,7 +72,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Ambient Grid Overlay */
         .grid-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;
             background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
@@ -84,6 +85,41 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
         .container { max-width: 1350px; margin: 0 auto; width: 100%; position: relative; }
+
+        /* --- OFFLINE / ONLINE NETWORK SCREENS --- */
+        .network-status {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: rgba(2, 2, 4, 0.98); backdrop-filter: blur(30px);
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(-100%) scale(0.9);
+            text-align: center;
+        }
+        .network-status.offline { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+        .network-status.online-anim { 
+            opacity: 1; pointer-events: all; transform: translateY(0) scale(1);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(4, 120, 87, 0.95));
+        }
+
+        .network-icon { font-size: 90px; margin-bottom: 25px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+        
+        @keyframes pulseGlitch {
+            0% { transform: scale(1); opacity: 1; text-shadow: 0 0 20px #ef4444; }
+            50% { transform: scale(1.1); opacity: 0.8; text-shadow: 0 0 40px #ef4444, 4px 4px 0px rgba(239, 68, 68, 0.4); }
+            100% { transform: scale(1); opacity: 1; text-shadow: 0 0 20px #ef4444; }
+        }
+        .offline-icon { color: #ef4444; animation: pulseGlitch 1.5s infinite; }
+        
+        @keyframes bounceGlow {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(10deg); opacity: 1; text-shadow: 0 0 40px #fff; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; text-shadow: 0 0 20px #fff; }
+        }
+        .online-icon { color: #fff; animation: bounceGlow 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        
+        .network-title { font-size: 42px; font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 10px; }
+        .network-desc { font-size: 18px; color: var(--text-muted); font-weight: 500; }
 
         /* --- 3D APP HEADER --- */
         .app-header {
@@ -105,27 +141,38 @@
 
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         
+        /* Animated Color Text Effects */
+        @keyframes textGradientAnim {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animated-text {
+            background: linear-gradient(270deg, var(--primary), var(--quaternary), var(--secondary), var(--tertiary));
+            background-size: 300% 300%;
+            animation: textGradientAnim 5s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
         .logo-container { display: flex; align-items: center; gap: 14px; cursor: pointer; perspective: 1000px; }
         .logo-icon {
-            font-size: 34px;
+            font-size: 36px;
             background: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: float3D 4s ease-in-out infinite;
             transform-style: preserve-3d;
-            filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
+            filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.5));
         }
-        .logo-text {
-            font-size: 32px; font-weight: 900; letter-spacing: -1px;
-            background: linear-gradient(to right, var(--text-main), #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .logo-text { font-size: 34px; font-weight: 900; letter-spacing: -1px; }
         
         @keyframes float3D {
             0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1); }
-            25% { transform: translateY(-5px) rotateY(15deg) rotateX(-5deg) scale(1.05); }
-            75% { transform: translateY(5px) rotateY(-15deg) rotateX(5deg) scale(0.95); }
+            25% { transform: translateY(-6px) rotateY(20deg) rotateX(-10deg) scale(1.08); }
+            75% { transform: translateY(6px) rotateY(-20deg) rotateX(10deg) scale(0.92); }
         }
 
         .header-actions { display: flex; gap: 12px; }
@@ -138,7 +185,8 @@
         }
         .action-btn:hover { 
             background: var(--surface-hover); border-color: var(--primary); 
-            transform: translateY(-4px) scale(1.05); box-shadow: var(--primary-glow); color: var(--primary);
+            transform: translateY(-4px) scale(1.05) rotate(5deg); 
+            box-shadow: var(--primary-glow); color: var(--primary);
         }
 
         /* --- SEARCH & CATEGORIES --- */
@@ -164,7 +212,7 @@
             transition: var(--transition); font-size: 15px; font-weight: 600; letter-spacing: 0.5px;
             display: flex; align-items: center; gap: 10px; backdrop-filter: blur(10px);
         }
-        .cat-chip:hover { border-color: var(--border-highlight); color: var(--text-main); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+        .cat-chip:hover { border-color: var(--border-highlight); color: var(--text-main); background: rgba(255,255,255,0.08); transform: translateY(-3px) scale(1.02); }
         .cat-chip.active { 
             background: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary)); 
             color: #fff; border: none; box-shadow: var(--primary-glow); 
@@ -172,55 +220,59 @@
         }
 
         /* --- HYPER-PREMIUM 3D PRODUCT GRID --- */
-        .main-content { padding: 80px 24px 60px; min-height: 80vh; perspective: 1800px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 65px 35px; } 
+        .main-content { padding: 80px 24px 60px; min-height: 80vh; perspective: 2000px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 65px 35px; transform-style: preserve-3d; } 
         
         @keyframes premiumEmerge {
-            0% { opacity: 0; transform: translateY(120px) translateZ(-200px) rotateX(25deg) scale(0.8); }
+            0% { opacity: 0; transform: translateY(120px) translateZ(-300px) rotateX(35deg) scale(0.8); }
             100% { opacity: 1; transform: translateY(0) translateZ(0) rotateX(0) scale(1); }
         }
         
         @keyframes floatIdle {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-10px); }
         }
 
         .card-wrapper { 
             opacity: 0; 
             animation: premiumEmerge 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, floatIdle 6s ease-in-out infinite alternate;
             margin-top: 40px; 
+            perspective: 2000px;
         }
 
+        /* True 3D Interactive Card */
         .card {
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.15s linear;
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             height: 100%; display: flex; flex-direction: column;
             will-change: transform;
+            cursor: pointer;
         }
         
         /* The Glass Base */
         .card-bg {
             position: absolute; inset: 0;
-            background: linear-gradient(145deg, rgba(20, 20, 25, 0.6), rgba(5, 5, 10, 0.8));
+            background: linear-gradient(145deg, rgba(20, 20, 25, 0.7), rgba(5, 5, 10, 0.9));
             border: 1px solid var(--border); border-radius: 28px;
             backdrop-filter: var(--glass-blur); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             transition: var(--transition); z-index: 1; overflow: hidden;
+            transform: translateZ(0px); /* Base layer */
         }
         .card-bg::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
             background: var(--border-glow); z-index: 10; opacity: 0.5; transition: 0.4s;
         }
-        .card:hover .card-bg { box-shadow: 0 35px 70px rgba(0,0,0,0.8), inset 0 0 30px rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.15); }
+        .card:hover .card-bg { box-shadow: 0 45px 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.2); }
         .card:hover .card-bg::before { opacity: 1; }
 
         .glare {
             position: absolute; top: 0; left: 0; width: 200%; height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 40%);
+            background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%);
             pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 5; mix-blend-mode: overlay;
         }
 
-        /* The Content Layer */
+        /* The Content Layer popping out in 3D */
         .card-content {
             position: relative; z-index: 2;
             transform-style: preserve-3d;
@@ -235,36 +287,62 @@
             border-radius: 22px; overflow: hidden;
             box-shadow: 0 25px 45px rgba(0,0,0,0.7);
             border: 1px solid var(--border-highlight);
-            transform: translateZ(60px); 
-            transition: var(--transition);
+            transform: translateZ(50px); 
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             background: #000; position: relative;
         }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
         
         .card:hover .card-img-wrap { 
-            transform: translateZ(120px) translateY(-15px) scale(1.05); 
-            box-shadow: 0 40px 70px rgba(0,0,0,0.9), var(--primary-glow); 
+            transform: translateZ(100px) translateY(-20px) scale(1.08); 
+            box-shadow: 0 50px 80px rgba(0,0,0,0.9), var(--primary-glow); 
             border-color: var(--primary);
         }
         .card:hover .card-img { transform: scale(1.15); filter: brightness(1.15) contrast(1.1); }
         
-        .card-info { flex: 1; display: flex; flex-direction: column; transform: translateZ(30px); transition: 0.4s;}
+        .card-info { flex: 1; display: flex; flex-direction: column; transform: translateZ(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
         .card:hover .card-info { transform: translateZ(60px); }
 
         .card-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; line-height: 1.3; color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.5); letter-spacing: -0.5px;}
-        .card-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; flex: 1; font-weight: 400;}
         
-        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px;}
+        .card-desc { 
+            font-size: 15px; color: var(--text-muted); margin-bottom: 25px; 
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; 
+            overflow: hidden; line-height: 1.6; flex: 1; font-weight: 500; word-break: break-word;
+            transform: translateZ(20px); transition: 0.4s;
+        }
+        .card:hover .card-desc { transform: translateZ(40px); color: #fff; }
+        
+        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; transform: translateZ(25px); transition: 0.4s;}
+        .card:hover .card-footer { transform: translateZ(50px); border-top-color: rgba(255,255,255,0.15); }
+
         .card-price { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 12px; font-size: 15px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
         .price-free { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
         .price-paid { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
 
         .view-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-main); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: var(--transition);}
-        .card:hover .view-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #000; box-shadow: var(--primary-glow); border-color: transparent; transform: translateX(5px) scale(1.1);}
+        .card:hover .view-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #000; box-shadow: var(--primary-glow); border-color: transparent; transform: translateX(5px) scale(1.1) rotate(15deg);}
 
-        /* Loader */
-        .loader { width: 60px; height: 60px; margin: 80px auto; border-radius: 50%; border: 4px solid rgba(255,255,255,0.05); border-top-color: var(--primary); border-right-color: var(--tertiary); animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* 3D Cube Loader */
+        .cube-loader {
+            width: 60px; height: 60px; margin: 80px auto;
+            transform-style: preserve-3d; animation: spinCube 2s infinite linear;
+        }
+        .cube-face {
+            position: absolute; width: 60px; height: 60px;
+            background: rgba(0, 242, 254, 0.2); border: 2px solid var(--primary);
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.5), 0 0 20px rgba(0, 242, 254, 0.5);
+        }
+        .cube-face.front  { transform: translateZ(30px); }
+        .cube-face.back   { transform: rotateY(180deg) translateZ(30px); }
+        .cube-face.left   { transform: rotateY(-90deg) translateZ(30px); }
+        .cube-face.right  { transform: rotateY(90deg) translateZ(30px); }
+        .cube-face.top    { transform: rotateX(90deg) translateZ(30px); }
+        .cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
+        @keyframes spinCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
 
         /* --- STUNNING MODALS --- */
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
@@ -281,7 +359,6 @@
         }
         .modal.active { bottom: 0; transform: scale(1); opacity: 1; }
         
-        /* Fixed Close Button */
         .close-modal-btn {
             position: absolute; top: 25px; right: 25px; width: 48px; height: 48px;
             border-radius: 50%; background: rgba(255, 255, 255, 0.05);
@@ -296,7 +373,11 @@
         
         .modal-img { width: 100%; height: 280px; border-radius: 28px; object-fit: cover; margin-bottom: 30px; border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
         .modal-title { font-size: 32px; font-weight: 900; margin-bottom: 15px; line-height: 1.2; color: #fff; padding-right: 60px; letter-spacing: -1px;}
-        .modal-desc { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 35px; font-weight: 400;}
+        
+        .modal-desc { 
+            font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 35px; 
+            font-weight: 500; white-space: pre-wrap; word-break: break-word; 
+        }
         
         .btn-group { display: flex; gap: 15px; margin-top: 30px; }
         .btn { 
@@ -313,7 +394,7 @@
         .btn-outline { background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.15); color: var(--text-main); }
         .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-5px) scale(1.02); }
 
-        /* Checkout & Tracking Forms */
+        /* Checkout Forms */
         .info-card { background: rgba(0,0,0,0.5); border: 1px solid var(--border); border-radius: 24px; padding: 28px; margin-bottom: 30px; box-shadow: inset 0 2px 20px rgba(0,0,0,0.6); }
         .info-card h3 { font-size: 18px; margin-bottom: 18px; color: var(--primary); display: flex; align-items: center; gap: 12px; text-shadow: var(--primary-glow);}
         .info-card p { font-size: 15px; margin-bottom: 12px; color: var(--text-muted); display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;}
@@ -358,13 +439,16 @@
     <div class="grid-overlay"></div>
     <div id="toastContainer"></div>
 
+    <!-- Network Offline/Online Overlay -->
+    <div id="networkStatus" class="network-status"></div>
+
     <div class="app-header">
         <div class="container">
             <div class="top-bar">
                 <!-- 3D Animated Logo -->
-                <div class="logo-container">
+                <div class="logo-container" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                     <i class="fas fa-cube logo-icon"></i>
-                    <div class="logo-text">DevStore</div>
+                    <div class="logo-text animated-text">DevStore</div>
                 </div>
                 <div class="header-actions">
                     <!-- Track Orders Button -->
@@ -388,7 +472,16 @@
     </div>
 
     <div class="main-content container">
-        <div id="loader" class="loader"></div>
+        <div id="loader">
+            <div class="cube-loader">
+                <div class="cube-face front"></div>
+                <div class="cube-face back"></div>
+                <div class="cube-face right"></div>
+                <div class="cube-face left"></div>
+                <div class="cube-face top"></div>
+                <div class="cube-face bottom"></div>
+            </div>
+        </div>
         <div class="product-grid" id="productGrid"></div>
     </div>
 
@@ -399,10 +492,10 @@
         <div class="modal-drag"></div>
         <img src="" id="modImg" class="modal-img">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
-            <h2 id="modTitle" class="modal-title" style="margin-bottom: 0;"></h2>
+            <h2 id="modTitle" class="modal-title animated-text" style="margin-bottom: 0;"></h2>
             <span id="modPrice" class="card-price"></span>
         </div>
-        <p id="modDesc" class="modal-desc"></p>
+        <div id="modDesc" class="modal-desc"></div>
         
         <div class="btn-group">
             <a href="#" id="btnDemo" target="_blank" class="btn btn-outline"><i class="fas fa-play"></i> Live Demo</a>
@@ -415,7 +508,7 @@
     <div class="modal" id="checkoutModal">
         <button class="close-modal-btn" onclick="closeModals()" title="Cancel Checkout"><i class="fas fa-times"></i></button>
         <div class="modal-drag"></div>
-        <h2 class="modal-title">Secure Checkout</h2>
+        <h2 class="modal-title animated-text">Secure Checkout</h2>
         <p class="modal-desc" id="checkoutProductName"></p>
 
         <div class="info-card">
@@ -446,7 +539,7 @@
     <div class="modal" id="trackModal">
         <button class="close-modal-btn" onclick="closeModals()" title="Close Tracker"><i class="fas fa-times"></i></button>
         <div class="modal-drag"></div>
-        <h2 class="modal-title">Track Purchases</h2>
+        <h2 class="modal-title animated-text">Track Purchases</h2>
         <p class="modal-desc">Enter the exact WhatsApp number used during checkout to check your approval status and access premium files.</p>
         
         <form onsubmit="trackOrder(event)">
@@ -511,42 +604,54 @@
             }
         });
 
-        // Flawless 3D Interactive Hover Math
+        // Advanced 3D Interactive Hover & Touch Logic
         function apply3DTilt(element) {
             const glare = element.querySelector('.glare');
             let isHovered = false;
             
-            element.addEventListener('mousemove', (e) => {
+            const handleMove = (e) => {
                 isHovered = true;
                 const rect = element.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = ((y - centerY) / centerY) * -12; 
-                const rotateY = ((x - centerX) / centerX) * 12;
+                // Increased rotation multiplier for distinct 3D effect
+                const rotateX = ((y - centerY) / centerY) * -18; 
+                const rotateY = ((x - centerX) / centerX) * 18;
                 
                 requestAnimationFrame(() => {
                     if(isHovered) {
-                        element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                        element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
                         element.style.zIndex = "10";
                         if(glare) {
                             glare.style.transform = `translate(${x - rect.width}px, ${y - rect.height}px)`;
-                            glare.style.opacity = '0.5';
+                            glare.style.opacity = '0.6';
                         }
                     }
                 });
-            });
+            };
 
-            element.addEventListener('mouseleave', () => {
+            const handleLeave = () => {
                 isHovered = false;
                 requestAnimationFrame(() => {
                     element.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                     element.style.zIndex = "1";
                     if(glare) glare.style.opacity = '0';
                 });
-            });
+            };
+
+            // Mouse Events
+            element.addEventListener('mousemove', handleMove);
+            element.addEventListener('mouseleave', handleLeave);
+            
+            // Touch Events for Mobile 3D Rotation
+            element.addEventListener('touchmove', handleMove, {passive: true});
+            element.addEventListener('touchend', handleLeave);
         }
 
         // Render Cards
@@ -567,6 +672,8 @@
                     const priceLabel = isFree ? 'FREE' : `Rs. ${p.price}`;
                     const priceClass = isFree ? 'price-free' : 'price-paid';
 
+                    const productShortDesc = p.description || p.shortDescription || p.shortDesc || p.desc || p.details || 'A premium digital asset to boost your workflow.';
+
                     const wrapper = document.createElement('div');
                     wrapper.className = 'card-wrapper';
                     wrapper.style.animationDelay = `${count * 0.1}s`;
@@ -584,7 +691,7 @@
                             </div>
                             <div class="card-info">
                                 <h3 class="card-title">${p.title}</h3>
-                                <p class="card-desc">${p.shortDesc || 'A premium digital asset to boost your workflow.'}</p>
+                                <div class="card-desc">${productShortDesc}</div>
                                 <div class="card-footer">
                                     <span class="card-price ${priceClass}">${priceLabel}</span>
                                     <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
@@ -596,7 +703,7 @@
                     wrapper.appendChild(card);
                     grid.appendChild(wrapper);
                     
-                    if (window.innerWidth > 768) apply3DTilt(card);
+                    apply3DTilt(card); // Apply true 3D rotation handler to all devices
                     count++;
                 }
             }
@@ -618,7 +725,9 @@
             currentProduct = { id, ...allProducts[id] };
             document.getElementById('modImg').src = currentProduct.image || 'https://via.placeholder.com/400x200/1e293b/94a3b8?text=DevStore';
             document.getElementById('modTitle').innerText = currentProduct.title;
-            document.getElementById('modDesc').innerText = currentProduct.fullDesc || currentProduct.shortDesc;
+            
+            const productFullDesc = currentProduct.fullDesc || currentProduct.description || currentProduct.desc || currentProduct.shortDesc || currentProduct.shortDescription || 'No detailed description available.';
+            document.getElementById('modDesc').innerHTML = productFullDesc;
             
             const btnDemo = document.getElementById('btnDemo');
             if(currentProduct.demoLink) {
@@ -672,12 +781,10 @@
             document.getElementById('trackPhone').value = '';
         };
 
-        // Format and standardize phone numbers to prevent tracking errors
         function normalizePhone(phoneStr) {
             return phoneStr.replace(/\D/g, ''); 
         }
 
-        // Order Submit Handler
         window.submitOrder = async function(e) {
             e.preventDefault();
             const btn = e.submitter;
@@ -711,7 +818,6 @@
             }
         };
 
-        // Search/Track Order Handler
         window.trackOrder = async function(e) {
             e.preventDefault();
             const rawSearchPhone = document.getElementById('trackPhone').value;
@@ -722,7 +828,16 @@
             
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
             btn.disabled = true;
-            resultsDiv.innerHTML = '<div class="loader" style="margin: 30px auto; width: 40px; height: 40px;"></div>';
+            
+            resultsDiv.innerHTML = `
+                <div class="cube-loader" style="width: 40px; height: 40px; margin: 30px auto;">
+                    <div class="cube-face front" style="width:40px;height:40px;transform:translateZ(20px);"></div>
+                    <div class="cube-face back" style="width:40px;height:40px;transform:rotateY(180deg) translateZ(20px);"></div>
+                    <div class="cube-face right" style="width:40px;height:40px;transform:rotateY(90deg) translateZ(20px);"></div>
+                    <div class="cube-face left" style="width:40px;height:40px;transform:rotateY(-90deg) translateZ(20px);"></div>
+                    <div class="cube-face top" style="width:40px;height:40px;transform:rotateX(90deg) translateZ(20px);"></div>
+                    <div class="cube-face bottom" style="width:40px;height:40px;transform:rotateX(-90deg) translateZ(20px);"></div>
+                </div>`;
 
             try {
                 const ordersRef = ref(db, 'orders');
@@ -780,7 +895,7 @@
         };
     </script>
 
-    <!-- Theme Toggle JS -->
+    <!-- Theme & Network Handlers -->
     <script>
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
@@ -793,6 +908,32 @@
                 showToast("Dark Theme Activated", "success");
             }
         }
+
+        // Stunning Offline & Online Detection Animations
+        window.addEventListener('offline', () => {
+            const netStatus = document.getElementById('networkStatus');
+            netStatus.className = 'network-status offline';
+            netStatus.innerHTML = `
+                <i class="fas fa-power-off network-icon offline-icon"></i>
+                <h2 class="network-title animated-text" style="background-image: linear-gradient(270deg, #ef4444, #b91c1c, #ef4444); color:transparent;">Connection Lost</h2>
+                <p class="network-desc">Waiting for network signal...</p>
+            `;
+        });
+
+        window.addEventListener('online', () => {
+            const netStatus = document.getElementById('networkStatus');
+            netStatus.className = 'network-status online-anim';
+            netStatus.innerHTML = `
+                <i class="fas fa-wifi network-icon online-icon"></i>
+                <h2 class="network-title">Back Online!</h2>
+                <p class="network-desc" style="color:rgba(255,255,255,0.9);">Connection restored successfully.</p>
+            `;
+            
+            // Auto hide after animation
+            setTimeout(() => {
+                netStatus.className = 'network-status';
+            }, 2500);
+        });
     </script>
 </body>
 </html>

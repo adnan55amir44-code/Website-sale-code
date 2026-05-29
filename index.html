@@ -2,575 +2,507 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AdnanFutureBuild | Premium 3D Assets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#05050A" id="metaThemeColor">
+    
+    <!-- SEO & Open Graph Tags -->
+    <title>AdnanFutureBuild | Premium Source Codes, Apps & UI/UX Assets</title>
+    <meta name="description" content="Download premium digital assets, web source codes, mobile apps, 3D models, games, and UI/UX templates to accelerate your next big project. High-quality codes for developers.">
+    <meta name="keywords" content="source code, mobile apps, premium scripts, UI/UX templates, AdnanFutureBuild, web scripts, premium digital assets, games source code">
+    <meta name="author" content="Muhammad Adnan">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="AdnanFutureBuild | Premium Digital Assets">
+    <meta property="og:description" content="Download high-quality source codes, templates, and mobile apps.">
+    <meta property="og:image" content="banner.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AdnanFutureBuild | Premium Source Codes">
+    <meta name="twitter:description" content="Accelerate your next big project with premium digital assets, web source codes, and mobile apps.">
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AdnanFutureBuild",
+      "url": "https://yourwebsite.com/",
+      "description": "Download premium digital assets, web source codes, mobile apps, and UI/UX templates.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourwebsite.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Premium Font: Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* Ultra-Modern Midnight & Mesh Theme */
             --bg-base: #05050A;
-            --surface: rgba(15, 15, 20, 0.65);
-            --surface-hover: rgba(30, 30, 40, 0.85);
+            --surface: rgba(18, 18, 24, 0.85);
+            --surface-hover: rgba(30, 30, 40, 0.95);
             
-            /* Enhanced Sleek Gradients */
-            --primary: #00E5FF;     /* Neon Cyan */
-            --secondary: #0057FF;   /* Deep Royal Blue */
-            --tertiary: #B026FF;    /* Electric Violet */
-            --quaternary: #FF00A0;  /* Bright Magenta */
+            --primary: #00E5FF;
+            --primary-dark: #0088FF;
+            --accent-green: #00F260;
+            --accent-orange: #FF512F;
+            --accent-purple: #B026FF;
+            --accent-pink: #FF2A85; /* New Vibrant Color */
             
-            --primary-glow: 0 0 35px rgba(0, 229, 255, 0.45);
-            --tertiary-glow: 0 0 35px rgba(176, 38, 255, 0.45);
+            --primary-glow: 0 8px 30px rgba(0, 229, 255, 0.4);
+            --btn-glow: 0 10px 25px rgba(0, 136, 255, 0.5);
             
-            /* Clean Text & Borders */
             --text-main: #FFFFFF;
             --text-muted: #94A3B8; 
-            --border: rgba(255, 255, 255, 0.06);
-            --border-highlight: rgba(255, 255, 255, 0.15);
-            --border-glow: linear-gradient(90deg, transparent, var(--primary), var(--tertiary), transparent);
+            --border: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(255, 255, 255, 0.2);
 
-            /* Modern Glass Backgrounds */
-            --card-bg: linear-gradient(165deg, rgba(25, 25, 35, 0.6), rgba(10, 10, 15, 0.9));
-            --modal-bg: #0A0A0F;
-            --input-bg: rgba(255, 255, 255, 0.03);
-            --input-focus-bg: rgba(255, 255, 255, 0.08);
-            --info-card-bg: rgba(255, 255, 255, 0.02);
-            --track-card-bg: rgba(20, 20, 28, 0.95);
+            --card-bg: linear-gradient(145deg, #16161E, #0A0A0F);
+            --modal-bg: #0F0F16;
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-focus-bg: rgba(255, 255, 255, 0.1);
             
             --font: 'Outfit', sans-serif;
-            --glass-blur: blur(30px);
+            --glass-blur: blur(24px);
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            
+            /* Reusable animated gradient for texts */
+            --magic-gradient: linear-gradient(270deg, var(--primary), var(--accent-purple), var(--accent-pink), var(--primary));
         }
 
         body.light-mode {
-            /* Clean Pearl/Apple-like Light Theme */
-            --bg-base: #F8F9FA;
-            --surface: rgba(255, 255, 255, 0.8);
+            --bg-base: #F4F7FB;
+            --surface: rgba(255, 255, 255, 0.9);
             --surface-hover: rgba(255, 255, 255, 1);
-            --primary: #0066FF; 
-            --secondary: #00B4D8;
-            --tertiary: #8A2BE2; 
-            --quaternary: #FF007F;
             
+            --primary: #0066FF; 
+            --primary-dark: #0044CC;
             --text-main: #0F172A;
             --text-muted: #475569; 
-            --border: rgba(0, 0, 0, 0.06);
-            --border-highlight: rgba(0, 0, 0, 0.12);
-            --primary-glow: 0 15px 35px rgba(0, 102, 255, 0.25);
+            --border: rgba(0, 0, 0, 0.08);
+            --border-highlight: rgba(0, 0, 0, 0.15);
+            --primary-glow: 0 8px 30px rgba(0, 102, 255, 0.25);
+            --btn-glow: 0 10px 25px rgba(0, 102, 255, 0.3);
 
-            --card-bg: linear-gradient(165deg, rgba(255, 255, 255, 1), rgba(245, 247, 250, 0.9));
+            --card-bg: linear-gradient(145deg, #FFFFFF, #F8FAFC);
             --modal-bg: #FFFFFF;
-            --input-bg: rgba(0, 0, 0, 0.02);
-            --input-focus-bg: rgba(0, 0, 0, 0.05);
-            --info-card-bg: rgba(0, 0, 0, 0.02);
-            --track-card-bg: rgba(255, 255, 255, 1);
+            --input-bg: rgba(0, 0, 0, 0.04);
+            --input-focus-bg: rgba(0, 0, 0, 0.08);
+            
+            --magic-gradient: linear-gradient(270deg, var(--primary), var(--accent-purple), #FF2A85, var(--primary));
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font); -webkit-tap-highlight-color: transparent; }
         
-        /* Smooth Mesh Gradient Background */
-        @keyframes ambientPulse {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
+        body { background-color: var(--bg-base); color: var(--text-main); transition: background-color 0.5s ease, color 0.5s ease; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+        /* Enhanced Ambient Animated Background */
+        .ambient-bg { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100vw; height: 100vh; 
+            z-index: -2; 
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(0, 229, 255, 0.12), transparent 40%), 
+                radial-gradient(circle at 85% 85%, rgba(176, 38, 255, 0.12), transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(255, 42, 133, 0.08), transparent 50%);
+            animation: pulseBg 12s infinite alternate ease-in-out; 
+        }
+        @keyframes pulseBg { 
+            0% { transform: scale(1) translate(0, 0); } 
+            100% { transform: scale(1.15) translate(-20px, 10px); } 
         }
 
-        body {
-            background-color: var(--bg-base);
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(0, 87, 255, 0.12), transparent 45%),
-                radial-gradient(circle at 90% 20%, rgba(176, 38, 255, 0.12), transparent 45%),
-                radial-gradient(circle at 80% 90%, rgba(0, 229, 255, 0.1), transparent 45%),
-                radial-gradient(circle at 20% 80%, rgba(255, 0, 160, 0.08), transparent 45%);
-            background-size: 200% 200%;
-            background-attachment: fixed;
-            animation: ambientPulse 20s ease-in-out infinite;
-            color: var(--text-main);
-            transition: background-color 0.5s ease, color 0.5s ease;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+        .grid-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.6; }
 
-        .grid-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;
-            background-image: linear-gradient(var(--border) 1px, transparent 1px),
-                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);
-            opacity: 0.6;
-        }
+        .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border-highlight); border-radius: 20px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-
-        .container { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; padding: 0 clamp(16px, 4vw, 32px); }
-
-        /* --- OFFLINE / ONLINE NETWORK SCREENS --- */
-        .network-status {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: rgba(5, 5, 10, 0.95); backdrop-filter: var(--glass-blur);
-            opacity: 0; pointer-events: none; padding: 20px;
-            transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-            transform: translateY(-100%) scale(0.95);
-            text-align: center;
-        }
-        .network-status.offline { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
-        .network-status.online-anim { 
-            opacity: 1; pointer-events: all; transform: translateY(0) scale(1);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(4, 120, 87, 0.95));
-        }
-
-        .network-icon { font-size: clamp(60px, 15vw, 90px); margin-bottom: clamp(15px, 4vw, 25px); filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
-        
-        @keyframes pulseGlitch {
-            0% { transform: scale(1); opacity: 1; text-shadow: 0 0 20px #ef4444; }
-            50% { transform: scale(1.1); opacity: 0.8; text-shadow: 0 0 40px #ef4444, 4px 4px 0px rgba(239, 68, 68, 0.4); }
-            100% { transform: scale(1); opacity: 1; text-shadow: 0 0 20px #ef4444; }
-        }
-        .offline-icon { color: #ef4444; animation: pulseGlitch 1.5s infinite; }
-        
-        @keyframes bounceGlow {
-            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
-            60% { transform: scale(1.2) rotate(10deg); opacity: 1; text-shadow: 0 0 40px #fff; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; text-shadow: 0 0 20px #fff; }
-        }
-        .online-icon { color: #fff; animation: bounceGlow 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
-        
-        .network-title { font-size: clamp(28px, 8vw, 42px); font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 10px; }
-        .network-desc { font-size: clamp(14px, 4vw, 18px); color: rgba(255, 255, 255, 0.7); font-weight: 500; }
-
-        /* --- SLEEK APP HEADER --- */
-        .app-header {
-            position: sticky; top: 0; z-index: 100;
-            background: var(--surface);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            padding: clamp(16px, 3vw, 24px) 0;
-            border-bottom: 1px solid var(--border);
-            animation: slideDown 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-        }
-        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
-
-        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(20px, 5vw, 30px); }
-        
-        @keyframes textGradientAnim {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .animated-text {
-            background: linear-gradient(270deg, var(--primary), var(--quaternary), var(--secondary), var(--tertiary));
-            background-size: 300% 300%;
-            animation: textGradientAnim 6s ease infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* --- UPDATED LOGO DESIGN --- */
-        .logo-container { display: flex; align-items: center; gap: clamp(10px, 2.5vw, 16px); cursor: pointer; perspective: 1000px; }
-        
-        .logo-img {
-            width: clamp(38px, 8vw, 50px);
-            height: clamp(38px, 8vw, 50px);
-            border-radius: 50%;
-            border: 2px solid transparent;
-            background: linear-gradient(135deg, var(--primary), var(--tertiary)) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            box-shadow: var(--primary-glow);
-            animation: float3D 4s ease-in-out infinite;
-            transform-style: preserve-3d;
-            object-fit: cover;
-            padding: 2px; /* For the border space */
-        }
-        
-        /* Hack to apply gradient border easily over an image */
-        .logo-img-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: clamp(40px, 8.5vw, 52px);
-            height: clamp(40px, 8.5vw, 52px);
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--tertiary));
-            box-shadow: 0 8px 25px rgba(0, 229, 255, 0.3);
-            animation: float3D 5s ease-in-out infinite;
-            transform-style: preserve-3d;
-        }
-        .logo-img-wrapper img {
-            width: calc(100% - 4px);
-            height: calc(100% - 4px);
-            border-radius: 50%;
-            object-fit: cover;
-            background: var(--bg-base);
-        }
-
-        .logo-text { font-size: clamp(20px, 5.5vw, 28px); font-weight: 900; letter-spacing: -0.5px; }
-        
-        @keyframes float3D {
-            0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1); }
-            25% { transform: translateY(-4px) rotateY(15deg) rotateX(-5deg) scale(1.05); }
-            75% { transform: translateY(4px) rotateY(-15deg) rotateX(5deg) scale(0.95); }
-        }
-
-        .header-actions { display: flex; gap: clamp(10px, 2.5vw, 16px); }
-        .action-btn { 
-            width: clamp(42px, 11vw, 50px); height: clamp(42px, 11vw, 50px); 
-            border-radius: 50%; border: 1px solid var(--border);
-            background: var(--input-bg); color: var(--text-main); 
-            font-size: clamp(16px, 4vw, 18px); 
-            display: flex; align-items: center; justify-content: center; cursor: pointer; 
+        /* ADVERTISEMENTS CSS - Fits 160x300 perfectly */
+        .ad-container { 
+            width: 100%; 
+            max-width: 320px; 
+            min-width: 180px;
+            min-height: 330px; 
+            margin: 25px auto; 
+            padding: 15px 10px; 
+            background: var(--input-bg); 
+            border: 1px dashed var(--border-highlight); 
+            border-radius: 16px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+            overflow: hidden;
             transition: var(--transition);
         }
-        .action-btn:hover { 
-            background: var(--surface-hover); border-color: var(--primary); 
-            transform: translateY(-5px) scale(1.05) rotate(8deg); 
-            box-shadow: var(--primary-glow); color: var(--primary);
+        .ad-container:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--primary-glow); }
+        .ad-container::before { 
+            content: 'Advertisement'; 
+            position: absolute; 
+            top: 4px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            font-size: 9px; 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-weight: 700; 
+            z-index: 1;
         }
+        .ad-container iframe { border: none !important; margin: 0 auto; display: block; max-width: 100%; position: relative; z-index: 2;}
 
-        /* --- SEARCH & CATEGORIES --- */
-        .search-container { position: relative; margin-bottom: clamp(20px, 5vw, 30px); width: 100%; }
-        .search-container i { position: absolute; left: clamp(18px, 5vw, 24px); top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: clamp(15px, 4vw, 18px); transition: var(--transition); }
-        .search-container input {
-            width: 100%; padding: clamp(16px, 4vw, 20px) clamp(20px, 5vw, 24px) clamp(16px, 4vw, 20px) clamp(50px, 14vw, 65px);
-            border-radius: 100px; border: 1px solid var(--border);
-            background: var(--input-bg); color: var(--text-main); font-size: clamp(15px, 4vw, 17px); outline: none;
-            transition: var(--transition); font-weight: 500;
-            backdrop-filter: blur(10px);
-        }
-        .search-container input:focus { 
-            border-color: var(--primary); background: var(--input-focus-bg);
-            box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.15), inset 0 2px 10px rgba(0,0,0,0.1); 
-        }
-        .search-container input:focus + i, .search-container input:focus ~ i {
-            color: var(--primary);
-        }
+        /* Navbar */
+        .app-header { position: sticky; top: 0; z-index: 100; background: var(--surface); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); padding: 16px 0; border-bottom: 1px solid var(--border); box-shadow: 0 4px 30px rgba(0,0,0,0.05); }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 15px;}
+        .logo-container { display: flex; align-items: center; gap: 14px; text-decoration: none; transition: var(--transition); }
+        .logo-container:hover { transform: scale(1.05); }
+        .logo-img-wrapper { width: 56px; height: 56px; border-radius: 50%; background: var(--magic-gradient); background-size: 300% 300%; animation: gradientMove 4s infinite linear; display: flex; align-items: center; justify-content: center; box-shadow: var(--primary-glow); flex-shrink: 0; padding: 2px; }
+        .logo-img-wrapper img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: var(--bg-base); border: 2px solid var(--bg-base); }
         
-        .categories { display: flex; gap: clamp(10px, 2.5vw, 16px); overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .animated-text { 
+            background: var(--magic-gradient); 
+            background-size: 200% 200%; 
+            animation: textShine 5s linear infinite; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-size: 26px; 
+            font-weight: 900; 
+            letter-spacing: -0.5px; 
+        }
+        @keyframes textShine { to { background-position: 200% center; } }
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        .header-actions { display: flex; gap: 12px; }
+        .action-btn { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text-main); font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); }
+        .action-btn:hover { background: var(--surface-hover); border-color: var(--primary); color: var(--primary); transform: translateY(-4px) rotate(5deg); box-shadow: var(--primary-glow); }
+
+        .search-container { position: relative; margin-bottom: 20px; width: 100%; }
+        .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 16px; transition: var(--transition); }
+        .search-container input { width: 100%; height: 54px; padding: 0 20px 0 50px; border-radius: 16px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text-main); font-size: 16px; outline: none; transition: var(--transition); font-weight: 500; }
+        .search-container input:focus { border-color: var(--primary); background: var(--input-focus-bg); box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.15); transform: translateY(-2px); }
+        .search-container input:focus + i { color: var(--primary); }
+        
+        .categories { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .categories::-webkit-scrollbar { display: none; }
-        .cat-chip {
-            padding: clamp(10px, 3vw, 14px) clamp(20px, 5vw, 32px); border-radius: 100px; border: 1px solid var(--border);
-            background: var(--input-bg); color: var(--text-muted); white-space: nowrap; cursor: pointer;
-            transition: var(--transition); font-size: clamp(14px, 3.8vw, 16px); font-weight: 600; letter-spacing: 0.5px;
-            display: flex; align-items: center; gap: 8px; backdrop-filter: blur(10px);
+        .cat-chip { height: 44px; padding: 0 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text-muted); white-space: nowrap; cursor: pointer; transition: var(--transition); font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .cat-chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 229, 255, 0.1); }
+        .cat-chip.active { color: #fff; border: none; font-weight: 700; transform: translateY(-2px); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); box-shadow: var(--primary-glow); }
+
+        .main-content { padding: 40px 0 80px; min-height: 80vh; }
+        
+        /* SUPERIOR HERO BANNER FOR banner.png */
+        .hero-banner { 
+            position: relative; 
+            width: 100%; 
+            min-height: 360px; /* Taller to show off banner */
+            border-radius: 24px; 
+            overflow: hidden; 
+            margin-bottom: 30px; 
+            display: flex; 
+            align-items: center; 
+            padding: 50px; 
+            background-color: var(--surface-hover); /* Fallback color */
+            background-image: url('banner.png');
+            background-position: center right; 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+            border: 1px solid var(--border-highlight); 
+            animation: slideDown 1s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .cat-chip i { font-size: 1.1em; transition: var(--transition); }
-        .cat-chip:hover { border-color: var(--border-highlight); color: var(--text-main); background: var(--surface-hover); transform: translateY(-3px) scale(1.02); }
-        .cat-chip.active { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            color: #fff; border: none; box-shadow: var(--primary-glow); 
-            transform: translateY(-4px) scale(1.05); font-weight: 700;
+        @keyframes slideDown { 0% { opacity: 0; transform: translateY(-30px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        /* Smart Gradient: Very dark on the left for text reading, transparent on right for image visibility */
+        .hero-banner::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(90deg, rgba(5, 5, 10, 0.95) 0%, rgba(5, 5, 10, 0.8) 40%, rgba(5, 5, 10, 0.1) 100%); 
+            transition: background 0.4s ease; 
+        }
+        body.light-mode .hero-banner::before { 
+            background: linear-gradient(90deg, rgba(244, 247, 251, 0.95) 0%, rgba(244, 247, 251, 0.8) 40%, rgba(244, 247, 251, 0.1) 100%); 
+        }
+        
+        .hero-content { position: relative; z-index: 1; max-width: 650px; animation: fadeInRight 1s ease 0.3s both; }
+        @keyframes fadeInRight { 0% { opacity: 0; transform: translateX(-20px); } 100% { opacity: 1; transform: translateX(0); } }
+        
+        .hero-content h2 { 
+            font-size: clamp(32px, 6vw, 54px); 
+            font-weight: 900; 
+            margin-bottom: 15px; 
+            background: var(--magic-gradient); 
+            background-size: 200% auto;
+            animation: textShine 4s linear infinite;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            line-height: 1.15; 
+        }
+        .hero-content p { font-size: clamp(16px, 4vw, 19px); color: var(--text-muted); line-height: 1.6; font-weight: 500; }
+        
+        @media (max-width: 768px) { 
+            .hero-banner { min-height: 300px; padding: 30px 20px; text-align: left; background-position: center; } 
+            .hero-banner::before { background: linear-gradient(to top, rgba(5,5,10,0.95) 10%, rgba(5,5,10,0.4) 100%); } 
+            body.light-mode .hero-banner::before { background: linear-gradient(to top, rgba(244,247,251,0.95) 10%, rgba(244,247,251,0.4) 100%); } 
         }
 
-        /* --- HYPER-PREMIUM 3D PRODUCT GRID --- */
-        .main-content { padding: clamp(40px, 10vw, 80px) 0 clamp(40px, 10vw, 60px); min-height: 80vh; perspective: 2000px; }
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); 
-            gap: clamp(40px, 8vw, 70px) clamp(25px, 5vw, 40px); 
-            transform-style: preserve-3d; 
-        } 
-        
-        @keyframes premiumEmerge {
-            0% { opacity: 0; transform: translateY(60px) translateZ(-150px) rotateX(15deg) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) translateZ(0) rotateX(0) scale(1); }
-        }
-        
-        @keyframes floatIdle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        .product-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 20px; } 
+        @media (min-width: 650px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; } }
+        @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; } }
+
+        /* Staggered Card Animation Setup */
+        @keyframes cardPop {
+            0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .card-wrapper { 
-            opacity: 0; 
-            animation: premiumEmerge 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, floatIdle 7s ease-in-out infinite alternate;
-            margin-top: clamp(20px, 5vw, 40px); 
-            perspective: 2000px;
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            display: flex; 
+            flex-direction: column; 
+            cursor: pointer; 
+            transition: var(--transition); 
+            overflow: hidden; 
+            text-decoration: none; 
+            color: inherit; 
+            height: 100%; 
+            animation: cardPop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
+        .card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 25px 50px rgba(0, 229, 255, 0.15); }
+        .card-img-wrap { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; border-bottom: 1px solid var(--border); background: #000; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .card:hover .card-img { transform: scale(1.1); }
+        .card-badge { position: absolute; top: 12px; right: 12px; padding: 6px 14px; border-radius: 10px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); color: #fff; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        
+        .card-info { padding: 22px; flex: 1; display: flex; flex-direction: column; position: relative; z-index: 2; background: var(--card-bg); }
+        .card-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; color: var(--text-main); transition: var(--transition); }
+        .card:hover .card-title { color: var(--primary); }
+        .card-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; flex: 1; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px; margin-top: auto; }
+        .card-price { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 10px; font-size: 15px; font-weight: 800; }
+        .price-free { background: rgba(0, 242, 96, 0.15); color: #00F260; }
+        .price-paid { background: rgba(255, 81, 47, 0.15); color: #FF512F; }
+        .view-btn { background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: var(--transition); }
+        .card:hover .view-btn { background: var(--primary); color: #000; border-color: transparent; transform: translateX(5px); box-shadow: var(--primary-glow); }
 
-        /* True 3D Interactive Card */
-        .card {
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%; display: flex; flex-direction: column;
-            will-change: transform;
-            cursor: pointer;
-        }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        @media (min-width: 600px) { .btn-group { flex-direction: row; } }
+        .btn { flex: 1; min-height: 56px; padding: 0 24px; border-radius: 16px; border: none; font-size: 16px; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; overflow: hidden; }
         
-        /* Adaptive Glass Base */
-        .card-bg {
-            position: absolute; inset: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--border); border-radius: clamp(24px, 6vw, 32px);
-            backdrop-filter: var(--glass-blur); box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            transition: var(--transition); z-index: 1; overflow: hidden;
-            transform: translateZ(0px); 
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--primary), var(--accent-purple)); 
+            background-size: 200% auto;
+            color: #fff; 
+            box-shadow: var(--btn-glow); 
+            z-index: 1; 
+            transition: all 0.4s ease;
         }
-        .card-bg::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: var(--border-glow); z-index: 10; opacity: 0; transition: 0.4s;
-        }
-        .card:hover .card-bg { box-shadow: 0 45px 90px rgba(0,0,0,0.2), inset 0 0 40px rgba(255,255,255,0.02); border-color: var(--border-highlight); }
-        .card:hover .card-bg::before { opacity: 1; }
-
-        .glare {
-            position: absolute; top: 0; left: 0; width: 200%; height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%);
-            pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 5; mix-blend-mode: overlay;
-        }
-
-        /* Content Layer popping out */
-        .card-content {
-            position: relative; z-index: 2;
-            transform-style: preserve-3d;
-            display: flex; flex-direction: column; height: 100%;
-            padding: 0 clamp(20px, 5vw, 30px) clamp(24px, 6vw, 30px) clamp(20px, 5vw, 30px); pointer-events: none; 
-        }
-
-        /* Detached Image */
-        .card-img-wrap {
-            width: 100%; height: clamp(180px, 50vw, 220px);
-            margin: clamp(-35px, -10vw, -45px) auto clamp(20px, 5vw, 25px) auto; 
-            border-radius: clamp(18px, 5vw, 24px); overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-            border: 1px solid var(--border-highlight);
-            transform: translateZ(60px); 
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            background: #000; position: relative;
-        }
-        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transform: skewX(-25deg); animation: shimmer 3s infinite; z-index: -1; }
+        @keyframes shimmer { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
+        .btn-primary:hover { transform: translateY(-4px) scale(1.02); background-position: right center; box-shadow: 0 15px 35px rgba(176, 38, 255, 0.5); color: #fff;}
         
-        .card:hover .card-img-wrap { 
-            transform: translateZ(110px) translateY(-15px) scale(1.03); 
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5), var(--primary-glow); 
-            border-color: var(--primary);
-        }
-        .card:hover .card-img { transform: scale(1.1); filter: brightness(1.1) contrast(1.1); }
-        
-        .card-info { flex: 1; display: flex; flex-direction: column; transform: translateZ(40px); transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);}
-        .card:hover .card-info { transform: translateZ(70px); }
-
-        .card-title { font-size: clamp(20px, 5.5vw, 24px); font-weight: 800; margin-bottom: clamp(10px, 2.5vw, 14px); line-height: 1.3; color: var(--text-main); letter-spacing: -0.5px;}
-        
-        .card-desc { 
-            font-size: clamp(14px, 4vw, 15px); color: var(--text-muted); margin-bottom: clamp(20px, 5vw, 25px); 
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; 
-            overflow: hidden; line-height: 1.6; flex: 1; font-weight: 500; word-break: break-word;
-            transform: translateZ(20px); transition: 0.4s;
-        }
-        .card:hover .card-desc { transform: translateZ(30px); color: var(--text-main); }
-        
-        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--border); padding-top: clamp(16px, 4.5vw, 22px); transform: translateZ(25px); transition: 0.4s;}
-        .card:hover .card-footer { transform: translateZ(40px); border-top-color: var(--border-highlight); }
-
-        .card-price { display: inline-flex; align-items: center; gap: 8px; padding: clamp(8px, 2.5vw, 10px) clamp(14px, 4vw, 20px); border-radius: 14px; font-size: clamp(13px, 3.8vw, 15px); font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
-        .price-free { background: rgba(16, 185, 129, 0.12); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.25); box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
-        .price-paid { background: rgba(245, 158, 11, 0.12); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.25); box-shadow: 0 0 15px rgba(245, 158, 11, 0.1); }
-
-        .view-btn { background: var(--input-bg); border: 1px solid var(--border-highlight); color: var(--text-main); width: clamp(40px, 11vw, 46px); height: clamp(40px, 11vw, 46px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(15px, 4.5vw, 17px); transition: var(--transition);}
-        .card:hover .view-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; box-shadow: var(--primary-glow); border-color: transparent; transform: translateX(8px) scale(1.1) rotate(15deg);}
-
-        /* 3D Cube Loader */
-        .cube-loader {
-            width: clamp(50px, 14vw, 70px); height: clamp(50px, 14vw, 70px); margin: 100px auto;
-            transform-style: preserve-3d; animation: spinCube 2.5s infinite linear;
-        }
-        .cube-face {
-            position: absolute; width: 100%; height: 100%;
-            background: rgba(0, 229, 255, 0.15); border: 2px solid var(--primary);
-            box-shadow: inset 0 0 25px rgba(0, 229, 255, 0.4), 0 0 25px rgba(0, 229, 255, 0.4);
-            border-radius: 4px;
-        }
-        .cube-face.front  { transform: translateZ(calc(clamp(50px, 14vw, 70px) / 2)); }
-        .cube-face.back   { transform: rotateY(180deg) translateZ(calc(clamp(50px, 14vw, 70px) / 2)); }
-        .cube-face.left   { transform: rotateY(-90deg) translateZ(calc(clamp(50px, 14vw, 70px) / 2)); }
-        .cube-face.right  { transform: rotateY(90deg) translateZ(calc(clamp(50px, 14vw, 70px) / 2)); }
-        .cube-face.top    { transform: rotateX(90deg) translateZ(calc(clamp(50px, 14vw, 70px) / 2)); }
-        .cube-face.bottom { transform: rotateX(-90deg) translateZ(calc(clamp(50px, 14vw, 70px) / 2)); }
-        @keyframes spinCube {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg); }
-        }
-
-        /* --- STUNNING MODALS --- */
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
-        .overlay.active { opacity: 1; pointer-events: all; }
-        
-        .modal {
-            position: fixed; bottom: -100%; left: 0; width: 100%; max-height: 90vh;
-            background: var(--modal-bg); z-index: 1000; border-radius: clamp(24px, 7vw, 40px) clamp(24px, 7vw, 40px) 0 0;
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); padding: clamp(30px, 7vw, 50px) clamp(24px, 6vw, 40px); overflow-y: auto;
-            border-top: 1px solid var(--border-highlight); box-shadow: 0 -20px 80px rgba(0,0,0,0.8);
-            background-image: 
-                radial-gradient(circle at top right, rgba(0, 229, 255, 0.05), transparent 50%),
-                radial-gradient(circle at bottom left, rgba(176, 38, 255, 0.05), transparent 50%);
-        }
-        .modal.active { bottom: 0; transform: scale(1); opacity: 1; }
-        
-        .close-modal-btn {
-            position: absolute; top: clamp(20px, 5vw, 30px); right: clamp(20px, 5vw, 30px); 
-            width: clamp(42px, 11vw, 52px); height: clamp(42px, 11vw, 52px);
-            border-radius: 50%; background: var(--input-bg);
-            border: 1px solid var(--border-highlight); color: var(--text-main);
-            display: flex; align-items: center; justify-content: center;
-            font-size: clamp(18px, 5vw, 22px); cursor: pointer; z-index: 1010;
-            transition: var(--transition); backdrop-filter: blur(10px);
-        }
-        .close-modal-btn:hover { background: var(--primary); color: #000; transform: rotate(90deg) scale(1.1); box-shadow: var(--primary-glow); border-color: var(--primary); }
-
-        .modal-drag { width: clamp(60px, 15vw, 80px); height: 6px; background: rgba(255,255,255,0.15); border-radius: 10px; margin: clamp(-15px, -4vw, -25px) auto clamp(25px, 7vw, 40px) auto; }
-        
-        .modal-img { width: 100%; height: clamp(200px, 50vw, 320px); border-radius: clamp(20px, 6vw, 32px); object-fit: cover; margin-bottom: clamp(25px, 7vw, 35px); border: 1px solid var(--border); box-shadow: 0 25px 60px rgba(0,0,0,0.3); }
-        .modal-title { font-size: clamp(26px, 7vw, 36px); font-weight: 900; margin-bottom: 15px; line-height: 1.2; color: var(--text-main); padding-right: clamp(50px, 14vw, 70px); letter-spacing: -1px;}
-        
-        .modal-desc { 
-            font-size: clamp(15px, 4.2vw, 17px); color: var(--text-muted); line-height: 1.8; margin-bottom: clamp(30px, 7vw, 40px); 
-            font-weight: 500; white-space: pre-wrap; word-break: break-word; 
-        }
-        
-        .btn-group { display: flex; flex-direction: column; gap: clamp(12px, 3.5vw, 18px); margin-top: clamp(25px, 7vw, 35px); }
-        .btn { 
-            flex: 1; padding: clamp(16px, 4.5vw, 20px) clamp(20px, 6vw, 28px); border-radius: clamp(18px, 5vw, 24px); border: none; font-size: clamp(16px, 4.5vw, 18px); font-weight: 800; 
-            cursor: pointer; text-align: center; text-decoration: none; transition: var(--transition); 
-            display: flex; align-items: center; justify-content: center; gap: 12px;
-            position: relative; overflow: hidden; transform-style: preserve-3d;
-        }
-        .btn i { font-size: 1.2em; }
-        .btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: 0s; }
-        .btn:hover::after { left: 100%; transition: 0.8s ease; }
-        
-        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; box-shadow: var(--primary-glow); }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 45px rgba(0, 229, 255, 0.5); }
         .btn-outline { background: var(--input-bg); border: 2px solid var(--border-highlight); color: var(--text-main); }
-        .btn-outline:hover { background: var(--surface-hover); border-color: var(--text-main); transform: translateY(-3px) scale(1.02); }
+        .btn-outline:hover { background: var(--surface-hover); border-color: var(--primary); color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1); }
 
-        /* Checkout Forms */
-        .info-card { background: var(--info-card-bg); border: 1px solid var(--border); border-radius: clamp(20px, 6vw, 28px); padding: clamp(20px, 6vw, 32px); margin-bottom: clamp(25px, 7vw, 35px); box-shadow: inset 0 2px 25px rgba(0,0,0,0.05); }
-        .info-card h3 { font-size: clamp(16px, 4.5vw, 19px); margin-bottom: clamp(15px, 4vw, 20px); color: var(--primary); display: flex; align-items: center; gap: 12px; text-shadow: var(--primary-glow);}
-        .info-card p { font-size: clamp(14px, 4vw, 16px); margin-bottom: clamp(10px, 3vw, 14px); color: var(--text-muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px; border-bottom: 1px solid var(--border); padding-bottom: clamp(10px, 3vw, 14px);}
-        .info-card p strong { color: var(--text-main); font-weight: 700; text-align: right; }
-        .info-card p:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0;}
-        
-        .form-group { margin-bottom: clamp(20px, 6vw, 28px); width: 100%; }
-        .form-group label { display: block; margin-bottom: clamp(10px, 3vw, 14px); font-size: clamp(14px, 4vw, 16px); font-weight: 600; color: var(--text-muted); }
-        .form-control { width: 100%; box-sizing: border-box; padding: clamp(16px, 4.5vw, 20px) clamp(20px, 5vw, 28px); border-radius: clamp(18px, 5vw, 22px); background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); font-size: clamp(15px, 4.2vw, 17px); outline: none; transition: var(--transition); }
-        .form-control:focus { border-color: var(--primary); background: var(--input-focus-bg); box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.15); }
-        
-        .track-result-card { background: var(--track-card-bg); border: 1px solid var(--border-highlight); border-radius: clamp(20px, 6vw, 28px); padding: clamp(20px, 6vw, 30px); margin-top: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.15); }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal { position: fixed; left: 0; width: 100%; background: var(--modal-bg); z-index: 1000; transition: all 0.6s cubic-bezier(0.2, 1, 0.4, 1); overflow-y: auto; bottom: -100%; height: auto; max-height: 92vh; border-radius: 30px 30px 0 0; padding: 30px 25px 40px; box-shadow: 0 -10px 50px rgba(0,0,0,0.6); border-top: 1px solid var(--border-highlight); }
+        .modal.active { bottom: 0; }
+        .modal-drag { width: 50px; height: 6px; background: var(--border-highlight); border-radius: 10px; margin: -15px auto 25px; display: block; transition: var(--transition); }
+        .modal-drag:hover { background: var(--primary); }
 
-        /* Custom Toast System */
-        #toastContainer { position: fixed; top: clamp(20px, 5vw, 40px); left: 50%; transform: translateX(-50%); z-index: 10000; display: flex; flex-direction: column; gap: 12px; pointer-events: none; align-items: center; width: 90%; max-width: 420px; }
-        .toast { background: rgba(10, 10, 15, 0.98); backdrop-filter: blur(20px); color: #fff; padding: clamp(14px, 4vw, 18px) clamp(24px, 6vw, 35px); border-radius: 100px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); font-weight: 700; font-size: clamp(14px, 4vw, 16px); display: flex; align-items: center; gap: 12px; border: 1px solid var(--border-highlight); opacity: 0; transform: translateY(-50px) scale(0.9); transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); pointer-events: auto; width: max-content; max-width: 100%; }
-        .toast.show { opacity: 1; transform: translateY(0) scale(1); }
-        .toast i { font-size: 1.3em; }
-        .toast i.fa-check-circle { color: var(--primary); text-shadow: var(--primary-glow); }
-        .toast i.fa-exclamation-triangle { color: #ef4444; text-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
-
-        /* --- RESPONSIVE BREAKPOINTS --- */
-        @media(min-width: 600px) {
-            .btn-group { flex-direction: row; }
-        }
-
-        @media(min-width: 768px) {
-            .modal { 
-                width: clamp(550px, 85vw, 750px); left: 50%; transform: translateX(-50%) scale(0.95) rotateX(-5deg); height: auto; max-height: 88vh; 
-                border-radius: 40px; bottom: 50%; opacity: 0; visibility: hidden;
-                margin-bottom: -44vh; transform-origin: center bottom;
-            }
-            .modal.active { bottom: 50%; transform: translate(-50%, 50%) scale(1) rotateX(0deg); opacity: 1; visibility: visible; margin-bottom: 0;}
+        @media (min-width: 768px) {
+            .modal { width: 650px; left: 50%; transform: translateX(-50%) scale(0.95) translateY(20px); border-radius: 30px; bottom: 50%; opacity: 0; visibility: hidden; margin-bottom: -45vh; border: 1px solid var(--border-highlight); padding: 40px; }
+            .modal.active { bottom: 50%; transform: translate(-50%, 50%) scale(1) translateY(0); opacity: 1; visibility: visible; margin-bottom: 0; }
             .modal-drag { display: none; }
-            .modal-title { padding-right: 0; }
         }
 
-        @media(min-width: 1024px) {
-            .product-grid { grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); }
-        }
+        .close-modal-btn { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--input-bg); border: 1px solid var(--border-highlight); color: var(--text-main); display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: var(--transition); z-index: 10; }
+        .close-modal-btn:hover { background: #FF512F; color: #fff; transform: rotate(90deg) scale(1.1); border-color: transparent; box-shadow: 0 5px 15px rgba(255, 81, 47, 0.4); }
+        
+        .modal-img { width: 100%; aspect-ratio: 16/9; border-radius: 20px; object-fit: cover; margin-bottom: 24px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .modal-title { font-size: clamp(24px, 5vw, 34px); font-weight: 900; margin-bottom: 12px; line-height: 1.2; padding-right: 50px; }
+        .modal-desc { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; white-space: pre-wrap; word-break: break-word; }
+
+        .info-card { background: var(--input-bg); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 25px; position: relative; overflow: hidden; }
+        .info-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
+        .info-card h3 { font-size: 17px; margin-bottom: 15px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .info-card p { font-size: 15px; margin-bottom: 12px; color: var(--text-muted); display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border); padding-bottom: 12px; }
+        .info-card p strong { color: var(--text-main); font-weight: 700; text-align: right;}
+        .info-card p:last-child { border: none; padding: 0; margin: 0; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
+        .form-control { width: 100%; height: 56px; padding: 0 20px; border-radius: 16px; background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); font-size: 16px; outline: none; transition: var(--transition); }
+        .form-control:focus { border-color: var(--primary); background: var(--input-focus-bg); box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.15); transform: translateY(-2px); }
+
+        .track-result-card { background: var(--input-bg); border: 1px solid var(--border-highlight); border-radius: 16px; padding: 20px; margin-top: 20px; animation: slideDown 0.4s ease; border-left: 4px solid var(--accent-green); }
+
+        .spinner { width: 50px; height: 50px; border: 4px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite; margin: 60px auto; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #toastContainer { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 10000; display: flex; flex-direction: column; gap: 10px; width: 90%; max-width: 400px; pointer-events: none;}
+        .toast { background: var(--surface-hover); border: 1px solid var(--border-highlight); color: var(--text-main); padding: 16px 24px; border-radius: 16px; font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 12px; opacity: 0; transform: translateY(-30px) scale(0.9); transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 15px 40px rgba(0,0,0,0.6); pointer-events: auto; }
+        .toast.show { opacity: 1; transform: translateY(0) scale(1); }
+        .toast.success { border-bottom: 3px solid var(--accent-green); }
+        .toast.error { border-bottom: 3px solid var(--accent-orange); }
+        .toast.success i { color: var(--accent-green); font-size: 22px;}
+        .toast.error i { color: var(--accent-orange); font-size: 22px;}
+
+        .error-banner { text-align: center; background: rgba(255, 81, 47, 0.05); border: 1px solid var(--accent-orange); border-radius: 20px; padding: 50px 20px; margin-top: 20px; animation: slideDown 0.5s ease; }
+        .error-banner i { font-size: 60px; color: var(--accent-orange); margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,81,47,0.4));}
+        .error-banner h3 { font-size: 24px; color: var(--text-main); margin-bottom: 10px; }
+        .error-banner p { font-size: 16px; color: var(--text-muted); max-width: 500px; margin: 0 auto; line-height: 1.6;}
+        
+        .offline-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #FF512F, #DD2476); color: #fff; text-align: center; padding: 15px; font-weight: 700; font-size: 15px; z-index: 9999; transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 -10px 30px rgba(255, 81, 47, 0.4); }
+        .offline-banner.active { transform: translateY(0); }
     </style>
 </head>
 <body>
+    <div class="ambient-bg"></div>
     <div class="grid-overlay"></div>
-    <div id="toastContainer"></div>
+    <div id="toastContainer" aria-live="polite"></div>
+    <div id="offlineBanner" class="offline-banner"><i class="fas fa-wifi-slash"></i> You are currently offline. Checking connection...</div>
 
-    <!-- Network Offline/Online Overlay -->
-    <div id="networkStatus" class="network-status"></div>
-
-    <div class="app-header">
+    <header class="app-header" role="banner">
         <div class="container">
             <div class="top-bar">
-                <!-- Brand New Logo -->
-                <div class="logo-container" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <a href="javascript:void(0)" class="logo-container" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Homepage">
                     <div class="logo-img-wrapper">
-                        <img src="Adnan.png" alt="AdnanFutureBuild Logo">
+                        <img src="Adnan.png" alt="Adnan Logo" onerror="this.src='https://ui-avatars.com/api/?name=Adnan&background=00E5FF&color=fff&size=100&bold=true'">
                     </div>
-                    <div class="logo-text animated-text">AdnanFutureBuild</div>
-                </div>
-                <div class="header-actions">
-                    <!-- Track Orders Button -->
-                    <button class="action-btn" onclick="openTrackModal()" title="Track My Orders"><i class="fas fa-box-open"></i></button>
-                    <!-- Theme Toggle -->
-                    <button class="action-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-                </div>
+                    <h1 class="animated-text">AdnanFutureBuild</h1>
+                </a>
+                <nav class="header-actions" aria-label="Primary Actions">
+                    <button class="action-btn" onclick="window.openTrackModal()" aria-label="Track Orders" title="Track Orders"><i class="fas fa-box-open"></i></button>
+                    <button class="action-btn" onclick="window.toggleTheme()" aria-label="Toggle Dark/Light Mode" title="Toggle Theme"><i class="fas fa-moon" id="themeIcon"></i></button>
+                </nav>
             </div>
+            
             <div class="search-container">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search for premium source codes, apps, games...">
+                <input type="text" id="searchInput" placeholder="Search premium codes, apps, games..." aria-label="Search Assets">
             </div>
-            <div class="categories" id="categoryContainer">
-                <div class="cat-chip active" onclick="filterCategory('All', this)"><i class="fas fa-layer-group"></i> All Assets</div>
-                <div class="cat-chip" onclick="filterCategory('web sale', this)"><i class="fas fa-code"></i> web code</div>
-                <div class="cat-chip" onclick="filterCategory('Apps', this)"><i class="fas fa-mobile-alt"></i> Mobile Apps</div>
-                <div class="cat-chip" onclick="filterCategory('Games', this)"><i class="fas fa-gamepad"></i> Games</div>
-                <div class="cat-chip" onclick="filterCategory('UI/UX', this)"><i class="fas fa-paint-brush"></i> UI/UX</div>
-            </div>
+            
+            <nav class="categories" id="categoryContainer" aria-label="Category Filters">
+                <button class="cat-chip active" onclick="window.filterCategory('All', this)"><i class="fas fa-layer-group"></i> All Assets</button>
+                <button class="cat-chip" onclick="window.filterCategory('Web', this)"><i class="fas fa-code"></i> Web Scripts</button>
+                <button class="cat-chip" onclick="window.filterCategory('Apps', this)"><i class="fas fa-mobile-alt"></i> Mobile Apps</button>
+                <button class="cat-chip" onclick="window.filterCategory('Games', this)"><i class="fas fa-gamepad"></i> Games</button>
+                <button class="cat-chip" onclick="window.filterCategory('UI/UX', this)"><i class="fas fa-paint-brush"></i> UI/UX</button>
+            </nav>
         </div>
+    </header>
+
+    <!-- TOP AD PLACEMENT -->
+    <div class="container">
+        <aside class="ad-container top-ad" aria-label="Top Advertisement">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'accd31af1124446072c22adbe7cca1fa',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/accd31af1124446072c22adbe7cca1fa/invoke.js"></script>
+        </aside>
     </div>
 
-    <div class="main-content container">
-        <div id="loader">
-            <div class="cube-loader">
-                <div class="cube-face front"></div>
-                <div class="cube-face back"></div>
-                <div class="cube-face right"></div>
-                <div class="cube-face left"></div>
-                <div class="cube-face top"></div>
-                <div class="cube-face bottom"></div>
+    <main class="main-content container" role="main">
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h2>Accelerate Your Next Big Project</h2>
+                <p>Download high-quality source codes, fully-functional mobile apps, advanced UI/UX templates, and complete 3D game models designed for top-tier developers.</p>
             </div>
-        </div>
-        <div class="product-grid" id="productGrid"></div>
-    </div>
+        </section>
+
+        <!-- MIDDLE AD PLACEMENT -->
+        <aside class="ad-container middle-ad" style="margin-top:0; margin-bottom:30px;" aria-label="Middle Advertisement">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'accd31af1124446072c22adbe7cca1fa',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/accd31af1124446072c22adbe7cca1fa/invoke.js"></script>
+        </aside>
+
+        <div id="loader" class="spinner" aria-label="Loading content..."></div>
+        <article class="product-grid" id="productGrid"></article>
+
+        <!-- BOTTOM AD PLACEMENT -->
+        <aside class="ad-container bottom-ad" style="margin-top: 40px;" aria-label="Bottom Advertisement">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'accd31af1124446072c22adbe7cca1fa',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/accd31af1124446072c22adbe7cca1fa/invoke.js"></script>
+        </aside>
+    </main>
 
     <!-- Product Details Modal -->
-    <div class="overlay" id="overlay" onclick="closeModals()"></div>
-    <div class="modal" id="productModal">
-        <button class="close-modal-btn" onclick="closeModals()" title="Back to Store"><i class="fas fa-times"></i></button>
+    <div class="overlay" id="overlay" onclick="window.closeModals()"></div>
+    <div class="modal" id="productModal" role="dialog" aria-modal="true">
         <div class="modal-drag"></div>
-        <img src="" id="modImg" class="modal-img">
-        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
-            <h2 id="modTitle" class="modal-title animated-text" style="margin-bottom: 0;"></h2>
+        <button class="close-modal-btn" onclick="window.closeModals()" aria-label="Close Modal"><i class="fas fa-times"></i></button>
+        <img src="" id="modImg" class="modal-img" alt="Product Image">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+            <h2 id="modTitle" class="modal-title"></h2>
             <span id="modPrice" class="card-price"></span>
         </div>
+        
         <div id="modDesc" class="modal-desc"></div>
+
+        <!-- MODAL AD PLACEMENT -->
+        <aside class="ad-container modal-ad" style="margin: 0 auto 20px auto; background: var(--input-bg); border-color: var(--primary);" aria-label="Product Advertisement">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'accd31af1124446072c22adbe7cca1fa',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/accd31af1124446072c22adbe7cca1fa/invoke.js"></script>
+        </aside>
         
         <div class="btn-group">
-            <a href="#" id="btnDemo" target="_blank" class="btn btn-outline"><i class="fas fa-play"></i> Live Demo</a>
-            <a href="#" id="btnDownload" target="_blank" class="btn btn-primary" style="display:none;"><i class="fas fa-cloud-download-alt"></i> Download Free</a>
-            <button id="btnBuy" class="btn btn-primary" onclick="openCheckout()" style="display:none;"><i class="fas fa-shopping-cart"></i> Purchase Now</button>
+            <a href="javascript:void(0)" id="btnDemo" target="_blank" class="btn btn-outline" rel="noopener"><i class="fas fa-play"></i> Live Demo</a>
+            <a href="javascript:void(0)" id="btnDownload" target="_blank" class="btn btn-primary" style="display:none;" rel="noopener"><i class="fas fa-cloud-download-alt"></i> Download Free</a>
+            <button id="btnBuy" class="btn btn-primary" onclick="window.openCheckout()" style="display:none;"><i class="fas fa-shopping-cart"></i> Purchase Now</button>
         </div>
     </div>
 
     <!-- Checkout Modal -->
-    <div class="modal" id="checkoutModal">
-        <button class="close-modal-btn" onclick="closeModals()" title="Cancel Checkout"><i class="fas fa-times"></i></button>
+    <div class="modal" id="checkoutModal" role="dialog" aria-modal="true">
         <div class="modal-drag"></div>
-        <h2 class="modal-title animated-text">Secure Checkout</h2>
+        <button class="close-modal-btn" onclick="window.closeModals()" aria-label="Close Modal"><i class="fas fa-times"></i></button>
+        <h2 class="modal-title">Secure Checkout</h2>
         <p class="modal-desc" id="checkoutProductName"></p>
 
         <div class="info-card">
@@ -580,421 +512,339 @@
             <p><span>Accepted Via</span> <strong>EasyPaisa & JazzCash</strong></p>
         </div>
 
-        <form id="orderForm" onsubmit="submitOrder(event)">
+        <form id="orderForm" onsubmit="window.submitOrder(event)">
             <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="orderName" class="form-control" placeholder="e.g. John Doe" required>
+                <label for="orderName">Full Name</label>
+                <input type="text" id="orderName" class="form-control" placeholder="e.g. John Doe" required minlength="3" maxlength="50">
             </div>
             <div class="form-group">
-                <label>WhatsApp Number (Used for tracking)</label>
-                <input type="tel" id="orderPhone" class="form-control" placeholder="e.g. 03194879958" required>
+                <label for="orderPhone">WhatsApp Number</label>
+                <input type="tel" id="orderPhone" class="form-control" placeholder="e.g. 03194879958" required pattern="^03[0-9]{9}$" title="Enter a valid 11-digit mobile number starting with 03">
             </div>
             <div class="form-group">
-                <label>Payment Proof (Screenshot URL)</label>
-                <input type="url" id="orderScreenshot" class="form-control" placeholder="Paste Google Drive/Imgur Link" required>
+                <label for="orderScreenshot">Payment Proof (URL)</label>
+                <input type="url" id="orderScreenshot" class="form-control" placeholder="Google Drive or Imgur Link" required>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 15px;"><i class="fas fa-check-circle"></i> Confirm Order</button>
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 10px;"><i class="fas fa-check-circle"></i> Confirm Order</button>
         </form>
     </div>
 
     <!-- Track Orders Modal -->
-    <div class="modal" id="trackModal">
-        <button class="close-modal-btn" onclick="closeModals()" title="Close Tracker"><i class="fas fa-times"></i></button>
+    <div class="modal" id="trackModal" role="dialog" aria-modal="true">
         <div class="modal-drag"></div>
-        <h2 class="modal-title animated-text">Track Purchases</h2>
-        <p class="modal-desc">Enter the exact WhatsApp number used during checkout to check your approval status and access premium files.</p>
+        <button class="close-modal-btn" onclick="window.closeModals()" aria-label="Close Modal"><i class="fas fa-times"></i></button>
+        <h2 class="modal-title">Track Purchases</h2>
+        <p class="modal-desc">Enter your WhatsApp number to check order status and download files.</p>
         
-        <form onsubmit="trackOrder(event)">
-            <div class="form-group search-container" style="margin-bottom: 25px;">
+        <form onsubmit="window.trackOrder(event)">
+            <div class="form-group search-container" style="margin-bottom: 20px;">
                 <i class="fas fa-phone-alt" style="color: var(--primary);"></i>
-                <input type="tel" id="trackPhone" class="form-control" placeholder="Enter number e.g. 03194879958" required style="padding-left: clamp(50px, 14vw, 65px);">
+                <input type="tel" id="trackPhone" class="form-control" placeholder="e.g. 03194879958" required pattern="^03[0-9]{9}$" title="Enter a valid 11-digit mobile number starting with 03">
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fas fa-search"></i> Find My Orders</button>
         </form>
         
-        <!-- Results -->
-        <div id="trackResults" style="margin-top: 35px; display: flex; flex-direction: column; gap: 20px;"></div>
+        <div id="trackResults"></div>
     </div>
 
-    <!-- FIREBASE INTEGRATION & LOGIC -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, onValue, push, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDEWP7K24CHc5Z4oigZVyLfTUf7G_ytCEA",
-            authDomain: "moves-21870.firebaseapp.com",
-            databaseURL: "https://moves-21870-default-rtdb.firebaseio.com",
-            projectId: "moves-21870",
-            storageBucket: "moves-21870.firebasestorage.app",
-            messagingSenderId: "90051442745",
-            appId: "1:90051442745:web:dfc38ca3afb010ca1fb5e8"
+    <!-- General UI Scripts -->
+    <script>
+        window.sanitizeHTML = (str) => {
+            const temp = document.createElement('div');
+            temp.textContent = str;
+            return temp.innerHTML;
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+        window.showToast = (msg, type = 'success') => {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i> <span>${window.sanitizeHTML(msg)}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 10);
+            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3500);
+        };
 
+        window.toggleTheme = () => {
+            document.body.classList.toggle('light-mode');
+            const icon = document.getElementById('themeIcon');
+            const metaTheme = document.getElementById('metaThemeColor');
+            
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                metaTheme.setAttribute("content", "#F4F7FB");
+                window.showToast("Light Mode Activated", "success");
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                metaTheme.setAttribute("content", "#05050A");
+                window.showToast("Dark Mode Activated", "success");
+            }
+        };
+
+        window.closeModals = () => {
+            document.getElementById('overlay').classList.remove('active');
+            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+        };
+    </script>
+
+    <!-- FIREBASE COMPAT SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+    <!-- FIREBASE LOGIC -->
+    <script>
+       const firebaseConfig = {
+          apiKey: "AIzaSyCl6ifEkTM8qIrY-4lbs4AK9TPf0Ak64ZI",
+          authDomain: "store-code-adnan.firebaseapp.com",
+          databaseURL: "https://store-code-adnan-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "store-code-adnan",
+          storageBucket: "store-code-adnan.firebasestorage.app",
+          messagingSenderId: "748287977139",
+          appId: "1:748287977139:web:0742b1f3e49257b6d0f2c6"
+       };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        
         let allProducts = {};
         let currentFilter = 'All';
         let currentProduct = null;
 
-        // Custom Toast Notification
-        window.showToast = function(msg, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle';
-            toast.innerHTML = `<i class="fas ${icon}"></i> <span>${msg}</span>`;
-            
-            container.appendChild(toast);
-            setTimeout(() => toast.classList.add('show'), 10);
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 500);
-            }, 3500);
-        }
+        window.addEventListener('offline', () => {
+            document.getElementById('offlineBanner').classList.add('active');
+            try { db.goOffline(); } catch(e) {}
+        });
 
-        // Fetch Products Data
-        const productsRef = ref(db, 'products');
-        onValue(productsRef, (snapshot) => {
+        window.addEventListener('online', () => {
+            document.getElementById('offlineBanner').classList.remove('active');
+            try { db.goOnline(); window.showToast("Connection Restored!", "success"); } catch(e) {}
+        });
+
+        const productsRef = db.ref('products');
+        
+        productsRef.on('value', (snapshot) => {
             document.getElementById('loader').style.display = 'none';
             if (snapshot.exists()) {
                 allProducts = snapshot.val();
-                renderProducts();
+                window.renderProducts();
             } else {
-                document.getElementById('productGrid').innerHTML = '<div style="text-align:center;width:100%;grid-column:1/-1;padding:clamp(40px, 10vw, 80px);"><i class="fas fa-box-open" style="font-size:clamp(50px, 14vw, 70px);color:var(--border-highlight);margin-bottom:20px;"></i><h3 style="font-size:clamp(22px, 6vw, 26px);color:var(--text-main);">Store is empty</h3><p style="color:var(--text-muted);font-size:clamp(15px, 4vw, 17px);">No premium assets available right now.</p></div>';
+                document.getElementById('productGrid').innerHTML = '<p style="text-align:center;width:100%;color:var(--text-muted);padding:40px;font-size:18px;">Stay tuned! Exciting assets are coming soon.</p>';
+            }
+        }, (error) => {
+            document.getElementById('loader').style.display = 'none';
+            if(error.message && error.message.includes("permission_denied")) {
+                document.getElementById('productGrid').innerHTML = `
+                    <div class="error-banner">
+                        <i class="fas fa-lock"></i>
+                        <h3>Firebase Permissions Required</h3>
+                        <p>Database access is currently restricted.<br><br><b>Please go to Firebase Console > Realtime Database > Rules</b> and update read/write access to true.</p>
+                    </div>`;
+            } else {
+                document.getElementById('productGrid').innerHTML = '<div class="error-banner"><i class="fas fa-server"></i><h3>Connection Timeout</h3><p>Could not connect to the database. Please check your network and try reloading the page.</p></div>';
             }
         });
 
-        // 3D Interactive Hover Effect Setup
-        function apply3DTilt(element) {
-            const glare = element.querySelector('.glare');
-            let isHovered = false;
-            
-            const handleMove = (e) => {
-                isHovered = true;
-                const rect = element.getBoundingClientRect();
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                
-                if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) {
-                    return handleLeave();
-                }
-
-                const x = clientX - rect.left;
-                const y = clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -12; 
-                const rotateY = ((x - centerX) / centerX) * 12;
-                
-                requestAnimationFrame(() => {
-                    if(isHovered) {
-                        element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                        element.style.zIndex = "10";
-                        if(glare) {
-                            glare.style.transform = `translate(${x - rect.width}px, ${y - rect.height}px)`;
-                            glare.style.opacity = '0.7';
-                        }
-                    }
-                });
-            };
-
-            const handleLeave = () => {
-                isHovered = false;
-                requestAnimationFrame(() => {
-                    element.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                    element.style.zIndex = "1";
-                    if(glare) glare.style.opacity = '0';
-                });
-            };
-
-            element.addEventListener('mousemove', handleMove);
-            element.addEventListener('mouseleave', handleLeave);
-            element.addEventListener('touchmove', handleMove, {passive: true});
-            element.addEventListener('touchend', handleLeave);
-            element.addEventListener('touchcancel', handleLeave);
-        }
-
-        // Render Cards
-        window.renderProducts = function() {
+        window.renderProducts = () => {
             const grid = document.getElementById('productGrid');
-            const query = document.getElementById('searchInput').value.toLowerCase();
+            const query = window.sanitizeHTML(document.getElementById('searchInput').value.toLowerCase());
+            if(!grid) return;
             grid.innerHTML = '';
-
             let count = 0;
+
             for (let id in allProducts) {
                 const p = allProducts[id];
-                const categoryMatch = p.category ? p.category : "web sale"; 
-                const matchCat = currentFilter === 'All' || categoryMatch === currentFilter;
-                const matchSearch = p.title.toLowerCase().includes(query);
+                const itemCat = p.category || "Web"; 
+                const matchCat = currentFilter === 'All' || itemCat.toLowerCase().includes(currentFilter.toLowerCase());
+                const matchSearch = (p.title || '').toLowerCase().includes(query) || (p.description || '').toLowerCase().includes(query);
 
                 if (matchCat && matchSearch) {
                     const isFree = !p.price || parseFloat(p.price) <= 0;
-                    const priceLabel = isFree ? 'FREE' : `Rs. ${p.price}`;
-                    const priceClass = isFree ? 'price-free' : 'price-paid';
-
-                    const productShortDesc = p.description || p.shortDescription || p.shortDesc || p.desc || p.details || 'A premium digital asset to boost your workflow.';
-
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'card-wrapper';
-                    wrapper.style.animationDelay = `${count * 0.1}s`;
-
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.onclick = () => window.openProduct(id);
-                    card.innerHTML = `
-                        <div class="card-bg">
-                            <div class="glare"></div>
-                        </div>
-                        <div class="card-content">
+                    
+                    // Added animation-delay for the staggered effect
+                    grid.innerHTML += `
+                        <a href="javascript:void(0)" class="card" style="animation-delay: ${count * 0.08}s" onclick="window.openProduct('${window.sanitizeHTML(id)}')">
                             <div class="card-img-wrap">
-                                <img src="${p.image}" class="card-img" alt="${p.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200/1e293b/94a3b8?text=AdnanFutureBuild'">
+                                <img src="${window.sanitizeHTML(p.image)}" class="card-img" alt="${window.sanitizeHTML(p.title)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80'">
+                                <div class="card-badge">${window.sanitizeHTML(itemCat)}</div>
                             </div>
                             <div class="card-info">
-                                <h3 class="card-title">${p.title}</h3>
-                                <div class="card-desc">${productShortDesc}</div>
+                                <h3 class="card-title">${window.sanitizeHTML(p.title)}</h3>
+                                <p class="card-desc">${window.sanitizeHTML(p.shortDesc || p.description || 'Premium scalable asset designed for top-tier development.')}</p>
                                 <div class="card-footer">
-                                    <span class="card-price ${priceClass}">${priceLabel}</span>
+                                    <span class="card-price ${isFree ? 'price-free' : 'price-paid'}">${isFree ? '<i class="fas fa-gift"></i> FREE' : `Rs. ${window.sanitizeHTML(p.price.toString())}`}</span>
                                     <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
                                 </div>
                             </div>
-                        </div>
-                    `;
-                    
-                    wrapper.appendChild(card);
-                    grid.appendChild(wrapper);
-                    
-                    apply3DTilt(card);
+                        </a>`;
                     count++;
                 }
             }
-            if(count === 0) grid.innerHTML = '<div style="text-align:center;width:100%;grid-column:1/-1;padding:clamp(40px, 10vw, 80px);"><i class="fas fa-search-minus" style="font-size:clamp(50px, 14vw, 60px);color:var(--border-highlight);margin-bottom:20px;"></i><p style="color:var(--text-muted);font-size:clamp(16px, 4.5vw, 18px);">No matching items found.</p></div>';
+            if(count === 0) grid.innerHTML = '<p style="text-align:center;width:100%;color:var(--text-muted);padding:40px;font-size:18px;"><i class="fas fa-folder-open" style="font-size:40px;display:block;margin-bottom:15px;opacity:0.5;"></i>No matching items found for your search.</p>';
         };
 
-        // Filters
-        document.getElementById('searchInput').addEventListener('input', renderProducts);
+        document.getElementById('searchInput').addEventListener('input', window.renderProducts);
         
-        window.filterCategory = function(cat, element) {
+        window.filterCategory = (cat, element) => {
             currentFilter = cat;
             document.querySelectorAll('.cat-chip').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
-            renderProducts();
+            window.renderProducts();
         };
 
-        // Modal Functions
-        window.openProduct = function(id) {
+        window.openProduct = (id) => {
+            if(!allProducts[id]) return; 
             currentProduct = { id, ...allProducts[id] };
-            document.getElementById('modImg').src = currentProduct.image || 'https://via.placeholder.com/400x200/1e293b/94a3b8?text=AdnanFutureBuild';
-            document.getElementById('modTitle').innerText = currentProduct.title;
             
-            const productFullDesc = currentProduct.fullDesc || currentProduct.description || currentProduct.desc || currentProduct.shortDesc || currentProduct.shortDescription || 'No detailed description available.';
-            document.getElementById('modDesc').innerHTML = productFullDesc;
+            document.getElementById('modImg').src = currentProduct.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80';
+            document.getElementById('modTitle').innerText = currentProduct.title;
+            document.getElementById('modDesc').innerHTML = currentProduct.fullDesc || currentProduct.description || 'No detailed description available.';
             
             const btnDemo = document.getElementById('btnDemo');
-            if(currentProduct.demoLink) {
-                btnDemo.style.display = 'flex';
-                btnDemo.href = currentProduct.demoLink;
-            } else {
-                btnDemo.style.display = 'none';
-            }
+            if(currentProduct.demoLink) { btnDemo.style.display = 'flex'; btnDemo.href = currentProduct.demoLink; } 
+            else { btnDemo.style.display = 'none'; }
             
             const isFree = !currentProduct.price || parseFloat(currentProduct.price) <= 0;
-            const priceLabel = isFree ? 'FREE Asset' : `Rs. ${currentProduct.price}`;
             const priceEl = document.getElementById('modPrice');
-            priceEl.innerText = priceLabel;
+            priceEl.innerText = isFree ? 'FREE Asset' : `Rs. ${currentProduct.price}`;
             priceEl.className = 'card-price ' + (isFree ? 'price-free' : 'price-paid');
 
-            if(isFree) {
-                document.getElementById('btnBuy').style.display = 'none';
-                document.getElementById('btnDownload').style.display = 'flex';
-                document.getElementById('btnDownload').href = currentProduct.driveLink || '#';
-            } else {
-                document.getElementById('btnBuy').style.display = 'flex';
-                document.getElementById('btnDownload').style.display = 'none';
-            }
+            document.getElementById('btnBuy').style.display = isFree ? 'none' : 'flex';
+            const downloadBtn = document.getElementById('btnDownload');
+            downloadBtn.style.display = isFree ? 'flex' : 'none';
+            if(isFree) downloadBtn.href = currentProduct.driveLink || 'javascript:void(0)';
 
             document.getElementById('overlay').classList.add('active');
-            const modal = document.getElementById('productModal');
-            modal.classList.add('active');
-            modal.scrollTop = 0; 
+            document.getElementById('productModal').classList.add('active');
         };
 
-        window.closeModals = function() {
-            document.getElementById('overlay').classList.remove('active');
-            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
-        };
-
-        window.openCheckout = function() {
-            document.getElementById('productModal').classList.remove('active');
-            const modal = document.getElementById('checkoutModal');
-            modal.classList.add('active');
-            modal.scrollTop = 0;
-            document.getElementById('checkoutProductName').innerHTML = `Purchasing: <strong style="color:var(--primary)">${currentProduct.title}</strong>`;
-        };
-
-        window.openTrackModal = function() {
-            closeModals(); 
+        window.openCheckout = () => {
+            if(!currentProduct) return;
+            window.closeModals();
             document.getElementById('overlay').classList.add('active');
-            const modal = document.getElementById('trackModal');
-            modal.classList.add('active');
-            modal.scrollTop = 0;
+            document.getElementById('checkoutModal').classList.add('active');
+            document.getElementById('checkoutProductName').innerHTML = `Purchasing: <strong style="color:var(--primary)">${window.sanitizeHTML(currentProduct.title)}</strong>`;
+        };
+
+        window.openTrackModal = () => {
+            window.closeModals(); 
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('trackModal').classList.add('active');
             document.getElementById('trackResults').innerHTML = ''; 
             document.getElementById('trackPhone').value = '';
         };
 
-        function normalizePhone(phoneStr) {
-            return phoneStr.replace(/\D/g, ''); 
-        }
+        const normalizePhone = (str) => str.replace(/\D/g, ''); 
 
-        window.submitOrder = async function(e) {
+        window.submitOrder = (e) => {
             e.preventDefault();
+            
+            if(!navigator.onLine) {
+                window.showToast("Cannot place order while offline.", "error");
+                return;
+            }
+
             const btn = e.submitter;
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             btn.disabled = true;
 
-            const rawPhone = document.getElementById('orderPhone').value;
-
             const orderData = {
-                productId: currentProduct.id,
-                productName: currentProduct.title,
+                productId: currentProduct.id, 
+                productName: currentProduct.title, 
                 price: currentProduct.price,
-                customerName: document.getElementById('orderName').value,
-                customerPhone: normalizePhone(rawPhone), 
-                screenshotUrl: document.getElementById('orderScreenshot').value,
+                customerName: window.sanitizeHTML(document.getElementById('orderName').value),
+                customerPhone: normalizePhone(document.getElementById('orderPhone').value), 
+                screenshotUrl: window.sanitizeHTML(document.getElementById('orderScreenshot').value),
                 status: 'pending', 
                 timestamp: new Date().toISOString()
             };
 
-            try {
-                await push(ref(db, 'orders'), orderData);
-                showToast("Order Placed! Use the Box Icon to track your status.", "success");
+            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 10000));
+            const dbPromise = db.ref('orders').push().set(orderData);
+
+            Promise.race([dbPromise, timeoutPromise])
+            .then(() => {
+                window.showToast("Order Placed Successfully!", "success");
                 document.getElementById('orderForm').reset();
-                closeModals();
-            } catch (err) {
-                showToast("Error submitting order: " + err.message, "error");
-            } finally {
+                window.closeModals();
+            })
+            .catch((err) => {
+                if(err.message === 'timeout') {
+                    window.showToast("Request timed out due to heavy traffic. Try again.", "error");
+                } else if(err.message && err.message.includes("permission_denied")){
+                    window.showToast("Permission Denied: Update Firebase Rules", "error");
+                } else {
+                    window.showToast("Error processing order. Please check network.", "error");
+                }
+            })
+            .finally(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
-            }
+            });
         };
 
-        window.trackOrder = async function(e) {
+        window.trackOrder = async (e) => {
             e.preventDefault();
-            const rawSearchPhone = document.getElementById('trackPhone').value;
-            const cleanSearchPhone = normalizePhone(rawSearchPhone); 
             
+            if(!navigator.onLine) {
+                window.showToast("Network required to track orders.", "error");
+                return;
+            }
+
+            const cleanPhone = normalizePhone(document.getElementById('trackPhone').value); 
             const resultsDiv = document.getElementById('trackResults');
             const btn = e.submitter;
             
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
             btn.disabled = true;
-            
-            resultsDiv.innerHTML = `
-                <div class="cube-loader" style="width: 50px; height: 50px; margin: 40px auto;">
-                    <div class="cube-face front" style="transform:translateZ(25px);"></div>
-                    <div class="cube-face back" style="transform:rotateY(180deg) translateZ(25px);"></div>
-                    <div class="cube-face right" style="transform:rotateY(90deg) translateZ(25px);"></div>
-                    <div class="cube-face left" style="transform:rotateY(-90deg) translateZ(25px);"></div>
-                    <div class="cube-face top" style="transform:rotateX(90deg) translateZ(25px);"></div>
-                    <div class="cube-face bottom" style="transform:rotateX(-90deg) translateZ(25px);"></div>
-                </div>`;
+            resultsDiv.innerHTML = '<div class="spinner" style="width:30px; height:30px;"></div>';
 
             try {
-                const ordersRef = ref(db, 'orders');
-                const snap = await get(ordersRef);
+                const snapshot = await Promise.race([
+                    db.ref('orders').once('value'),
+                    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 10000))
+                ]);
                 
                 resultsDiv.innerHTML = '';
-                let foundOrders = false;
+                let found = false;
 
-                if (snap.exists()) {
-                    const allOrders = snap.val();
+                if (snapshot.exists()) {
+                    const allOrders = snapshot.val();
                     for (let key in allOrders) {
                         const o = allOrders[key];
-                        if (normalizePhone(o.customerPhone) === cleanSearchPhone) {
-                            foundOrders = true;
+                        if (normalizePhone(o.customerPhone) === cleanPhone) {
+                            found = true;
                             const isApproved = o.status === 'approved';
-                            const badgeClass = isApproved ? 'price-free' : 'price-paid';
-                            const badgeText = isApproved ? '<i class="fas fa-check-circle"></i> Approved' : '<i class="fas fa-clock"></i> Pending';
+                            const dateStr = new Date(o.timestamp).toLocaleDateString();
                             
-                            let downloadBtnHtml = '';
-                            if (isApproved && o.downloadLink) {
-                                downloadBtnHtml = `<a href="${o.downloadLink}" target="_blank" class="btn btn-primary" style="padding: clamp(14px, 4vw, 18px); font-size: clamp(15px, 4.2vw, 17px); margin-top: 25px;"><i class="fas fa-download"></i> Download Source File</a>`;
-                            }
-
-                            const orderDate = new Date(o.timestamp).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
-
                             resultsDiv.innerHTML += `
                                 <div class="track-result-card">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px; gap: 12px; flex-wrap: wrap;">
-                                        <h3 style="font-size: clamp(18px, 5vw, 20px); font-weight: 800; color: var(--text-main); letter-spacing: -0.3px;">${o.productName}</h3>
-                                        <span class="card-price ${badgeClass}">${badgeText}</span>
+                                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                        <h3 style="font-size:16px; margin:0; font-weight:800;">${window.sanitizeHTML(o.productName)}</h3>
+                                        <span class="card-price ${isApproved ? 'price-free' : 'price-paid'}" style="font-size:12px;">
+                                            ${isApproved ? '<i class="fas fa-check-circle"></i> Approved' : '<i class="fas fa-clock"></i> Pending'}
+                                        </span>
                                     </div>
-                                    <p style="color: var(--text-muted); font-size: clamp(13px, 3.8vw, 15px); font-weight: 500;"><i class="fas fa-calendar-alt"></i> ${orderDate}</p>
-                                    ${downloadBtnHtml}
-                                </div>
-                            `;
+                                    <p style="color:var(--text-muted); font-size:14px; margin:0;"><i class="fas fa-calendar-alt"></i> ${window.sanitizeHTML(dateStr)}</p>
+                                    ${(isApproved && o.downloadLink) ? `<a href="${window.sanitizeHTML(o.downloadLink)}" target="_blank" class="btn btn-primary" style="margin-top:15px; height:44px;"><i class="fas fa-download"></i> Download Asset</a>` : ''}
+                                </div>`;
                         }
                     }
                 }
-                
-                if (!foundOrders) {
-                    resultsDiv.innerHTML = `
-                        <div style="text-align:center; padding: clamp(30px, 8vw, 50px) clamp(15px, 4vw, 25px); background: var(--info-card-bg); border-radius: 24px; border: 1px dashed var(--border-highlight);">
-                            <i class="fas fa-search-minus" style="font-size: clamp(40px, 12vw, 50px); color: var(--border-highlight); margin-bottom: 20px;"></i>
-                            <p style="color: var(--text-muted); font-size: clamp(15px, 4.2vw, 17px);">No orders found for <b style="word-break: break-all;">${rawSearchPhone}</b>.</p>
-                        </div>`;
-                }
-                
+                if (!found) resultsDiv.innerHTML = `<p style="text-align:center; color:var(--text-muted); margin-top:20px; font-weight:600;"><i class="fas fa-search" style="display:block; font-size:30px; margin-bottom:10px; opacity:0.5;"></i>No orders found for this number.</p>`;
             } catch (err) {
-                resultsDiv.innerHTML = '<p style="text-align:center; color: #ef4444; font-weight: 600;">Network error checking records.</p>';
-                console.error(err);
+                 if(err.message === 'timeout') {
+                    resultsDiv.innerHTML = '<p style="text-align:center; color:#FF512F; font-weight:600;"><i class="fas fa-exclamation-triangle"></i> Request timed out. Traffic might be high.</p>';
+                 } else if(err.message && err.message.includes("permission_denied")){
+                    resultsDiv.innerHTML = '<div class="error-banner" style="padding:20px;"><i class="fas fa-lock" style="font-size:30px;"></i><h3 style="font-size:18px;">Permissions Denied</h3><p style="font-size:14px;">Update Firebase Rules to allow tracking.</p></div>';
+                } else {
+                    resultsDiv.innerHTML = '<p style="text-align:center; color:#FF512F;"><i class="fas fa-wifi-slash"></i> Network error occurred.</p>';
+                }
             } finally {
                 btn.innerHTML = '<i class="fas fa-search"></i> Find My Orders';
                 btn.disabled = false;
             }
         };
-    </script>
-
-    <!-- Theme & Network Handlers -->
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const icon = document.getElementById('themeIcon');
-            if(document.body.classList.contains('light-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                showToast("Light Theme Activated", "success");
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                showToast("Dark Theme Activated", "success");
-            }
-        }
-
-        window.addEventListener('offline', () => {
-            const netStatus = document.getElementById('networkStatus');
-            netStatus.className = 'network-status offline';
-            netStatus.innerHTML = `
-                <i class="fas fa-power-off network-icon offline-icon"></i>
-                <h2 class="network-title animated-text" style="background-image: linear-gradient(270deg, #ef4444, #b91c1c, #ef4444); color:transparent;">Connection Lost</h2>
-                <p class="network-desc">Waiting for network signal...</p>
-            `;
-        });
-
-        window.addEventListener('online', () => {
-            const netStatus = document.getElementById('networkStatus');
-            netStatus.className = 'network-status online-anim';
-            netStatus.innerHTML = `
-                <i class="fas fa-wifi network-icon online-icon"></i>
-                <h2 class="network-title" style="color: #ffffff;">Back Online!</h2>
-                <p class="network-desc" style="color:rgba(255,255,255,0.9);">Connection restored successfully.</p>
-            `;
-            
-            setTimeout(() => {
-                netStatus.className = 'network-status';
-            }, 2500);
-        });
     </script>
 </body>
 </html>
